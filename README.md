@@ -15,4 +15,4 @@
   
   ## OMT DIAGRAM
   
-  <img "images/images.png?raw=true" width="1000">
+  ![Image of OMT](images/images.png)
