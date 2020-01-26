@@ -11,3 +11,8 @@
   for the connectors. The connector class has subclasses for each connector (AND, OR, and SEMICOLON), and there is one 
   subclass for the tokens class as well. All subclasses have a run function designed to run the command prompt in sync with 
   the connectors next to the command token.
+  
+  
+  ## OMT DIAGRAM
+  
+  <img "images/images.png?raw=true" width="1000">
