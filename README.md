@@ -15,8 +15,7 @@
   
   ## OMT DIAGRAM
   
-  
-  ![Im of OMT](https://github.com/cs100/assignment-linux_gods/blob/master/images/images.png)
+  ![Image of OMT](images/images.png)
   
   
   ## CLASSES
