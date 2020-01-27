@@ -26,4 +26,6 @@
    and Connector classes. The Connector class keeps track of the left hand side of the connectors and right hand side of 
    the connectors and assigns them to the subclass of Semicolon, AND, OR. The Tokens class runs the commands as needed 
    and checks if  they properly executed. The Token class has a subclass called Exit that performs all the commands 
-   inorder and in accordance to the connectors. 
+   inorder and in accordance to the connectors.
+   
+   ## PROTOTYPES/RESEARCH
