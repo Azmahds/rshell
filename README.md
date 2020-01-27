@@ -43,3 +43,11 @@
                regarding the changed child process or until the child process is terminated. Returns pid of child if the 
                child exited successfully and 0 if parent has to wait for child to terminate. 
                (syntax = pid_t waitpid(child_pid &status, options))
+               
+   ## DEVELOPMENT AND TESTING ROADMAP
+   First we plan on creating the CMD class which will have a function that takes the command line and returns a vector with the proper 
+   assignments for each token and connector. Then, we create the Token and Connector subclasses. After those subclasses are created we 
+   will create the Exit subclass for the Token subclass and the AND, OR, and Semicolon subclasses for the Connector subclass. Then we 
+   will implement the run function which checks if the operation executed properly for each subclass (Exit, AND, OR, Semicolon). We will 
+   then Unit test each run function individually for any bugs. After all the Unit test are completed we will do an Intergration test so 
+   see how all the run functions interact and fix any bugs if necessary. 
