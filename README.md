@@ -33,9 +33,13 @@
                (negative equals child process wasn't created successfully, 0 equals returning a newly created child process,
                positive equals returns to parent with the value ID of newly created child process.) The total processes
                created by fork is 2^(number of forks).
+               (syntax = fork())
                
    execvp()  - Will search for a specific file on the command line, and then execute the file. Will return -1 if an 
                error has occured. 
+               (syntax = int execvp(const char *file, char *const argv[]))
                
    waitpid() - Halts parent process and waits for changes in child process (specified by pid) and then obtains information
-               regarding the changed child process or until the child process is terminated. 
+               regarding the changed child process or until the child process is terminated. Returns pid of child if the 
+               child exited successfully and 0 if parent has to wait for child to terminate. 
+               (syntax = pid_t waitpid(child_pid &status, options))
