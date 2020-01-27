@@ -8,9 +8,25 @@
 
 ## INTRODUCTION
   Our assignment will be able to accomplish reading the command line and executing the appropriate commands. It will be able
-  to differentiate between OR, AND, and a semicolon until an exit command is reached. Our design pattern will depend on ||,
-  && and ; (OR, AND, and SEMICOLON). The problem will be determining how these patterns will react on the command line with
-  the commands. The solution to this problem will be a file containing specifications for when one of these three patterns
-  are reached, and how the command line will react depending on the pattern.
-  We learn how to use three new Linux commands: fork , execvp , waitpid.
+  to differentiate between OR, AND, and a semicolon until an exit command is reached. Our design pattern illustrates the use
+  of composite classes referenced from parent classes. The design contains classes for the command tokens, as well as classes
+  for the connectors. The connector class has subclasses for each connector (AND, OR, and SEMICOLON), and there is one 
+  subclass for the tokens class as well. All subclasses have a run function designed to run the command prompt in sync with 
+  the connectors next to the command token.
   
+  
+  ## OMT DIAGRAM
+  
+  ![Image of OMT](https://github.com/cs100/assignment-linux_gods/blob/master/images/images.png?raw=true)
+  
+  
+  ## CLASSES
+    
+   Our base class is the CMD class. This class stores the input from the command line and distribute it to the Token
+   and Connector classes. The Connector class keeps track of the left hand side of the connectors and right hand side of 
+   the connectors and assigns them to the subclass of Semicolon, AND, OR. The Tokens class runs the commands as needed 
+   and checks if  they properly executed. The Token class has a subclass called Exit that performs all the commands 
+   inorder and in accordance to the connectors.
+   
+   ## PROTOTYPES/RESEARCH
+
