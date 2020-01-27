@@ -1,7 +1,9 @@
 # CS 100 Programming Project
 
 *WINTER 2020*
+
 *Hamza Syed 862097875*
+
 *Smit Patel 862076143*
 
 ## INTRODUCTION
