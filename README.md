@@ -22,11 +22,10 @@
   
   ## CLASSES
     
-   Our base class is the CMD class. This class stores the input from the command line and distribute it to the Token
-   and Connector classes. The Connector class keeps track of the left hand side of the connectors and right hand side of 
-   the connectors and assigns them to the subclass of Semicolon, AND, OR. The Tokens class runs the commands as needed 
-   and checks if  they properly executed. The Token class has a subclass called Exit that performs all the commands 
-   inorder and in accordance to the connectors.
+   Our base class is the CMD class. The Connector class keeps track of the left hand side of the connectors and right 
+   hand side of the connectors and assigns them to the subclass of Semicolon, AND, OR. The Tokens class runs the 
+   commands as needed and checks if  they properly executed. The Token class has a subclass called Exit that performs 
+   all the commands inorder and in accordance to the connectors.
    
    ## PROTOTYPES/RESEARCH
    fork()    - The process for creating a child process that runs alongside the parent process. Returns an integer value.
@@ -45,10 +44,8 @@
                (syntax = pid_t waitpid(child_pid &status, options))
                
    ## DEVELOPMENT AND TESTING ROADMAP
-   First we plan on creating the CMD class which will have a function that takes the command line and returns a vector with   
-   the proper assignments for each token and connector.
+   First we plan on creating the CMD class which will be our pure virtual base class.
    ([Issue #1](https://github.com/cs100/assignment-linux_gods/issues/1), 
-   [Issue #15](https://github.com/cs100/assignment-linux_gods/issues/15))
    
    Then, we create the Token and Connector subclasses. 
    ([Issue #2](https://github.com/cs100/assignment-linux_gods/issues/2), 
