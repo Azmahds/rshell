@@ -45,7 +45,7 @@
                
    ## DEVELOPMENT AND TESTING ROADMAP
    First we plan on creating the CMD class which will be our pure virtual base class.
-   ([Issue #1](https://github.com/cs100/assignment-linux_gods/issues/1), 
+   ([Issue #1](https://github.com/cs100/assignment-linux_gods/issues/1)) 
    
    Then, we create the Token and Connector subclasses. 
    ([Issue #2](https://github.com/cs100/assignment-linux_gods/issues/2), 
