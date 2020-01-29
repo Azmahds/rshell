@@ -28,20 +28,25 @@
    all the commands inorder and in accordance to the connectors.
    
    ## PROTOTYPES/RESEARCH
-   fork()    - The process for creating a child process that runs alongside the parent process. Returns an integer value.
+   `fork()`    - The process for creating a child process that runs alongside the parent process. Returns an integer value.
                (negative equals child process wasn't created successfully, 0 equals returning a newly created child process,
                positive equals returns to parent with the value ID of newly created child process.) The total processes
                created by fork is 2^(number of forks).
-               (syntax = fork())
+               (syntax = `fork()`)
                
-   execvp()  - Will search for a specific file on the command line, and then execute the file. Will return -1 if an 
+   `execvp()`  - Will search for a specific file on the command line, and then execute the file. Will return -1 if an 
                error has occured. 
-               (syntax = int execvp(const char *file, char *const argv[]))
+               (syntax = `int execvp(const char *file, char *const argv[])`)
                
-   waitpid() - Halts parent process and waits for changes in child process (specified by pid) and then obtains information
+   `waitpid()` - Halts parent process and waits for changes in child process (specified by pid) and then obtains information
                regarding the changed child process or until the child process is terminated. Returns pid of child if the 
                child exited successfully and 0 if parent has to wait for child to terminate. 
-               (syntax = pid_t waitpid(child_pid &status, options))
+               (syntax = `pid_t waitpid(child_pid &status, options)`)
+               
+   One of the ways we tested connectors was by inputing only one command and adding a `||` or a `&& `but with no input after. This resulted 
+   in the terminal asking for another command to be inserted before it actually ran the input. We also tried inputing `echo Hello && 
+   World` which we wanted to output " Hello && World" but instead outputted "Hello" and then an error message saying that the World 
+   command was not found. To get the result that we wanted we needed to do `echo "Hello && World"`
                
    ## DEVELOPMENT AND TESTING ROADMAP
    First we plan on creating the CMD class which will be our pure virtual base class.
