@@ -7,25 +7,50 @@
 
 using namespace std;
 
-int main(int argc, char* argv[]){
-        pid_t n = fork();
-        if (n == 0) {cout << "Hello Child" <<  endl;}
-        else if(n > 0) {waitpid(n, NULL, WNOHANG); cout << "Hello Parent" << endl;}
-        else {cout << "Error" << endl;}
+bool prototype(char* cmd[]);
 
-        //int execvp(argv[2], argv[]);
-        //cout << "END" << endl;
+int main(){
+  char* cmd1[2];
+  char* cmd2[3];
+  char* cmd3[4];
 
-//      pid_t child_pid;
-//      child_pid = fork ();
-//      if (child_pid != 0){
-//              cout << "parent" <<endl;
-//      }
-//      else{
-//              waitpid(child_pid, NULL,WNOHANG);
-//              cout << "after wait child"<<endl;
-//      }
+  cmd1[0] = "ls";
+  cmd1[1] = 0;
+
+  cmd2[0] = "ls";
+  cmd2[1] = "-a";
+  cmd2[2] = 0;
+
+  cmd3[0] = "echo";
+  cmd3[1] = "TEST";
+  cmd3[2] = "FUNCTION";
+  cmd3[3] = 0;
+
+  cout << "STARTING TEST 1" << endl;
+  if(prototype(cmd1)){cout << "Success #1" << endl << endl;}
+
+  cout << "STARTING TEST 2" << endl;
+  if(prototype(cmd2)){cout << "Success #2" << endl << endl;}
+
+  cout << "STARTING TEST 3" << endl;
+  if(prototype(cmd3)){cout << "Success #3" << endl << endl;}
 
   return 0;
 }
 
+bool prototype(char* cmd[]){
+  pid_t n;
+  int status;
+
+  n = fork();
+
+  if(n != 0){
+    waitpid(0, &status, 0);
+    return true;
+  }
+  else{
+    int l = execvp(cmd[0], cmd);
+    if(l < 0){cout << "ERROR RUNNING" << endl;}
+    return false;
+  }
+}
