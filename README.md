@@ -52,7 +52,7 @@
                
    One of the ways we tested connectors was by inputing only one command and adding a `||` or a `&& `but with no input after. This resulted 
    in the terminal asking for another command to be inserted before it actually ran the input. We also tried inputing `echo Hello && 
-   World` which we wanted to output " Hello && World" but instead outputted "Hello" and then an error message saying that the World 
+   World` which we wanted to output "Hello && World" but instead outputted "Hello" and then an error message saying that the World 
    command was not found. To get the result that we wanted we needed to do `echo "Hello && World"`
                
    ## DEVELOPMENT AND TESTING ROADMAP
