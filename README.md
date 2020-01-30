@@ -22,26 +22,39 @@
   
   ## CLASSES
     
-   Our base class is the CMD class. The Connector class keeps track of the left hand side of the connectors and right 
-   hand side of the connectors and assigns them to the subclass of Semicolon, AND, OR. The Tokens class runs the 
-   commands as needed and checks if  they properly executed. The Token class has a subclass called Exit that performs 
-   all the commands inorder and in accordance to the connectors.
+   Our base class is the CMD class. This class has no other use except that it will be a pure virtual function.
+   The inheritance classes from the base class will be the Connector and Token subclass. Both of these classes will 
+   contain virtual functions as well as a string variable to keep track of what token or connector is inside of 
+   their respective class. The connector class will have aditional pointers to its left and right hand connectors.
+   Inheriting from the token class will be the Exit subclass. This subclass will contain a run function that executes 
+   the commands from the tokens class, and will also exit the program once all commands are finished executing. Lastly 
+   there will be three inheritance classes for the connector class. The first one is the AND subclass, which will have 
+   a run funtion that compares the left command and right command to see which command should be run in which order. The 
+   second one is the OR subclass, which will have a run function that compares the left and right commands to see which
+   command should be executed. Finally, there is the SEMICOLON subclass. This subclass will just execute every command after
+   itself, using its own run function.
    
    ## PROTOTYPES/RESEARCH
-   fork()    - The process for creating a child process that runs alongside the parent process. Returns an integer value.
+   `fork()`    - The process for creating a child process that runs alongside the parent process. Returns an integer value.
                (negative equals child process wasn't created successfully, 0 equals returning a newly created child process,
                positive equals returns to parent with the value ID of newly created child process.) The total processes
                created by fork is 2^(number of forks).
-               (syntax = fork())
+               (syntax = `fork()`)
                
-   execvp()  - Will search for a specific file on the command line, and then execute the file. Will return -1 if an 
+   `execvp()`  - Will search for a specific file on the command line, and then execute the file. Will return -1 if an 
                error has occured. 
-               (syntax = int execvp(const char *file, char *const argv[]))
+               (syntax = `int execvp(const char *file, char *const argv[])`)
                
-   waitpid() - Halts parent process and waits for changes in child process (specified by pid) and then obtains information
+   `waitpid()` - Halts parent process and waits for changes in child process (specified by pid) and then obtains information
                regarding the changed child process or until the child process is terminated. Returns pid of child if the 
                child exited successfully and 0 if parent has to wait for child to terminate. 
-               (syntax = pid_t waitpid(child_pid &status, options))
+               (syntax = `pid_t waitpid(child_pid &status, options)`)
+               
+   One of the ways we tested connectors was by inputing only one command and adding a `||` or a `&& `but with no input after. This 
+   resulted in the terminal asking for another command to be inserted before it actually ran the input. We also tried inputing `echo 
+   Hello && World` which we wanted to output "Hello && World" but instead outputted "Hello" and then an error message saying that the 
+   World command was not found. To get the result that we wanted we needed to do `echo "Hello && World"`. We also tested the command 
+   `echo Hello && echo World || echo Good && echo Morning` which prints "Hello\nWorld\nMorning".
                
    ## DEVELOPMENT AND TESTING ROADMAP
    First we plan on creating the CMD class which will be our pure virtual base class.
