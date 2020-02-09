@@ -9,7 +9,7 @@ usign namespace std;
 
 class Exit : public Token{
         public:
-                bool run();
+                virtual bool run();
                 Exit() {ex[0] = '\n';};
 		Exit(char* arr[]) {ex[0] = '\n';};
 	Protected:

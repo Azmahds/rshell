@@ -17,8 +17,8 @@ Connector(char* arr[], int size){
 
 protected:
 char* cons[64];
-Connector* lhs;
-Connector* rhs;
+Token* lhs;
+Token* rhs;
 };
 
 #endif
