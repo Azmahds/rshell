@@ -2,6 +2,7 @@
 #define CONNECTOR_H
 
 #include "CMD.h"
+#include "Token.h"
 
 using namespace std;
 

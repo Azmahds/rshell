@@ -5,7 +5,7 @@
 
 #include <iostream>
 
-usign namespace std;
+using namespace std;
 
 class Token : public CMD{
 	public:

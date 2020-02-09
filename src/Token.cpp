@@ -3,18 +3,26 @@
 using namespace std;
 
 bool Token::run(){
-  pid_t n;
-  int status;
+  	pid_t pid;
+        pid_t wpid;
+        int status;
 
-  n = fork();
+        pid = fork();
 
-  if(n != 0){
-    waitpid(0, &status, 0);
-    return true;
-  }
-  else{
-    int l = execvp(cmd[0], cmd);
-    if(l < 0){cout << "ERROR RUNNING" << endl;}
-    return false;
-  }
+        if (pid < 0){
+                perror("FORK FAILURE");
+                exit(false);
+        }
+
+        switch(pid){
+                default:
+                        while(!WIFEXITED(status)){
+                                wpid = waitpid(pid, &status, WUNTRACED);
+                        }
+                case 0:   
+			execvp(toks[0], toks);
+			perror("EXECVP FAILURE");
+			exit(false);
+        }
+	return true;
 }
