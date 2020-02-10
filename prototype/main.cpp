@@ -4,23 +4,55 @@
 #include <unistd.h>
 #include <iostream>
 #include <sys/wait.h>
+#include <vector>
 
-
+#include "../src/Token.h"
+#include "../src/Connector.h"
+#include "../src/CMD.h"
+#include "../src/And.h"
+#include "../src/Or.h"
+#include "../src/Semicolon.h"
 
 
 using namespace std;
 
 
-char** parse(char* line){
-    char** toks[64];
+vector<CMD*> parse(char* line){
+    vector<CMD*> vec;
     char *token;
-    int i = 0;
-
+    char toks[64];
+    int j = 0, k = 0, l = 0;   
     token = strtok(line, "\n");
-    toks[i] = token;
-    ++i;
-
-    return toks;
+    
+    for(int i = 0; i < 1024; ++i){
+	for(int j = k; j < 1024; ++j){
+	   if(token[j]  == '&'){
+		l = 1;
+		break;
+	   }
+	   if(token[j]  == '|'){
+             	l = 2;
+		break;
+           }
+           if(token[j]  == ';'){
+                l = 3;
+		break;
+           }
+	   l = 4;   
+	}
+        if(l == 1){
+	   toks[0] = token[j];
+	   toks[1] = token[j+1];
+	   toks[2] = '\0';
+	   char *arr = toks;
+	   vec.push_back(new And(arr, 64));
+	}
+		
+    	k = j;
+    }
+    
+    
+    return vec;
 }
 
 
@@ -75,9 +107,14 @@ for(int i = 0; i < 1024; ++i){
 }
 
 args = parse(cmd);
+for(int i = 0; i < 10; ++i){
+    if(*args[i] == '\0'){
+            break;
+       }
+        cout << *args[i] << endl;
+       }                   
 run = prototype(args);
-}
+ }
 
-return 0;
-
+      return 0;
 }
