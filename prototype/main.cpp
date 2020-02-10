@@ -12,7 +12,7 @@ using namespace std;
 
 
 char** parse(char* line){
-    char * toks[64];
+    char** toks[64];
     char *token;
     int i = 0;
 
