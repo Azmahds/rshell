@@ -15,6 +15,8 @@ Connector(char* arr[], int size){
         cons[i] = arr[i];
     }   
 };
+void SetL(Token* L){lhs = L;};
+void SetR(Token* R){rhs = R;);
 
 protected:
 char* cons[64];
