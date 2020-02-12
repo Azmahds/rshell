@@ -23,6 +23,11 @@ Semicolon(char* arr){
    cons[1] = '\0';
 };
 
+virtual void display(){
+        cout << "SEMICOLON" <<endl;
+};
+
+
 };
 
 #endif

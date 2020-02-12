@@ -21,5 +21,9 @@ virtual bool run() = 0;
 CMD();
 CMD(char** line){cmdline = line;};
 
+virtual void display(){
+	cout << "CMD" << endl;
+};
+
 };
 #endif
