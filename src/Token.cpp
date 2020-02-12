@@ -13,14 +13,15 @@ bool Token::run(){
                 perror("FORK FAILURE");
                 exit(false);
         }
-
+	
         switch(pid){
                 default:
-                        while(!WIFEXITED(status)){
+                        while(!WIFEXITED(status) && !WIFSIGNALED(status)){
                                 wpid = waitpid(pid, &status, WUNTRACED);
                         }
-                case 0:   
-			execvp(toks[0], toks);
+                case 0: 
+			//char *arr = toks;  
+			execvp(toks[0], cmdline);
 			perror("EXECVP FAILURE");
 			exit(false);
         }

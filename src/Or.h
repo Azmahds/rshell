@@ -9,10 +9,9 @@ class Or : public Connector {
 public:
 virtual bool run();
 Or();
-Or(char* arr[], int size){
-    for (int i =0; i < size; ++i){
-        cons[i] = arr[i];
-    }   
+Or(char* arr){
+    cons[0] = arr;
+    cons[1] = '\0'; 
 };
 
 };

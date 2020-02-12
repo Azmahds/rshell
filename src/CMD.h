@@ -13,11 +13,13 @@
 using namespace std;
 
 class CMD {
+protected:
+char **cmdline = NULL;
+
 public:
 virtual bool run() = 0;
 CMD();
+CMD(char** line){cmdline = line;};
 
 };
-
-
 #endif

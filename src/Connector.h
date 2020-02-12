@@ -10,16 +10,15 @@ class Connector : public CMD {
 public:
 virtual bool run();
 Connector();
-Connector(char* arr[], int size){
-    for (int i =0; i < size; ++i){
-        cons[i] = arr[i];
-    }   
+Connector(char* arr){
+    cons[0] = arr;
+    cons[1] = '\0';
 };
 void SetL(Token* L){lhs = L;};
 void SetR(Token* R){rhs = R;};
 
 protected:
-char* cons[64];
+char* cons[2];
 Token* lhs;
 Token* rhs;
 };
