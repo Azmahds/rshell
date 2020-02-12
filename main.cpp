@@ -6,12 +6,12 @@
 #include <vector>
 #include <sys/wait.h>
 
-#include "../src/CMD.h"
-#include "../src/Token.h"
-#include "../src/Connector.h"
-#include "../src/And.h"
-#include "../src/Or.h"
-#include "../src/Semicolon.h"
+#include "src/CMD.h"
+#include "src/Token.h"
+#include "src/Connector.h"
+#include "src/And.h"
+#include "src/Or.h"
+#include "src/Semicolon.h"
 
 using namespace std;
 
@@ -24,6 +24,7 @@ int main(){
   vector<char*> tokens;
   string input;
   bool run;
+  vector<CMD*> command;
 
   cout << "$ ";
   getline(cin,input);
@@ -41,14 +42,27 @@ int main(){
   cmd = arr;
 
   tokens = parse(cmd);
-
+  
+  command = SetClasses(tokens);
+  
   return 0;
 }
 
 vector<CMD*> SetClasses(vector<char*> cline){
+  vector<CMD*> cmd;
+  char *arr[cline.size()];
+ 
+  for(unsigned i = 0; i < cline.size(); ++i){
+	arr[i] = cline.at(i);
+  }
+  arr[cline.size()] = '\0';
 
+  CMD* temp = new CMD(arr);
+  cmd.push_back(temp);
 
+cout << cmd.at(0) << endl; 
 }
+	
 
 vector<char*> parse(char *token){
     vector<char*> t;
@@ -60,15 +74,15 @@ vector<char*> parse(char *token){
 
     for(int i = 0; i < SIZE; ++i){
       if (token[i] == ' '){
-        token[i] = '-';
+        token[i] = '+';
       }
     }
 
-    token = strtok(token, "-");
+    token = strtok(token, "+");
 
     while(token != NULL){
       t.push_back(token);
-      token = strtok(NULL, "-");
+      token = strtok(NULL, "+");
     }
     return t;
 }
