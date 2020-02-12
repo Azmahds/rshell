@@ -11,13 +11,11 @@ class Token : public CMD{
 	public:
 		virtual bool run();
 		Token();
-		Token(char* arr[], int size) {
-			for(int i = 0; i < size; ++i){
-				toks[i] = arr[i];
-			}
+		Token(char** arr) {
+			toks = arr;
 		};
 	protected:
-		char* toks[64];
+		char** toks;
 };
 
 #endif

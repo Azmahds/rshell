@@ -9,10 +9,9 @@ class And : public Connector {
 public:
 virtual bool run();
 And();
-And(char* arr[], int size){
-    for (int i =0; i < size; ++i){
-        cons[i] = arr[i];
-    }
+And(char* arr){
+     cons[0] = arr;
+     cons[1] = '\0';
 };
 
 };

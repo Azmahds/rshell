@@ -8,113 +8,97 @@
 
 using namespace std;
 
-void  parse(char* line, vector<char* > &t){
+vector<char*> parse(char* token);
 
-    char *token;
-    int i = 0;
-
-
-    token = strtok(line, "\0");
-
-    cout << "outputting what is in token:  " << endl;
-    for(int i = 0; i < 1024; ++i){
-        if(token[i] == '\0'){
-            break;
-        }
-        cout << token[i] << endl;
-    }
-
-
-    while(token[i] != '\0'){
-        t.push_back(&token[i]) ;
-        ++i;
-    }
-
-    for(int i = 0; i < t.size(); ++i){
-        if(*(t.at(i)) == ' '){
-            *(t.at(i)) = '\0';
-        }
-    }
-
-    cout << "after" << endl;
-    char nc = '\0';
-    t.push_back(&nc);
-
-    i = 0;
-
-    while(*(t.at(i)) == '\0'){
-        ++i;
-    }
-
-    while(*(t.at(i)) != '\0'){
-        cout << *(t.at(i)) << endl;
-        ++i;
-    }
-
-    cout << "done with parse" << endl;
-}
-
-bool prototype(char* cmd[]){
-  pid_t n;
-  int status;
-
-  n = fork();
-
-  if(n != 0){
-    waitpid(0, &status, 0);
-    return true;
-  }
-  else{
-    int l = execvp(cmd[0], cmd);
-    if(l < 0){cout << "ERROR RUNNING" << endl;}
-    return false;
-  }
-}
-
+bool prototype(vector<char*> toks);
 
 int main(){
+  char *cmd;
+  vector<char*> tokens;
+  string input;
+  bool run;
 
-char *cmd;
-vector<char* > tokens;
-string input;
-bool run;
+  cout << "$ ";
+  getline(cin,input);
 
-getline(cin,input);
+  if(input == "exit"){
+      cout << "exiting now" << endl;
+  }
 
-if(input == "exit"){
-    cout << "exiting now" << endl;
-}
-else{
-
-char arr[1024];
-
-for(int i = 0; i < 1024; ++i){
+  char arr[input.size()];
+  for(int i = 0; i < input.size(); ++i){
     arr[i] = input.at(i);
-    if (i +1 == input.size()){
-        arr[i+1] = '\0';
-        break;
+  }
+  arr[input.size()] = '\0';
+
+  cmd = arr;
+
+  tokens = parse(cmd);
+
+//  cout << endl << "VECTOR: " << endl;
+//  for(unsigned j = 0; j < tokens.size(); ++j){
+//   cout << tokens.at(j) << endl;
+//  }
+//  cout << "END VECTOR" << endl << endl;
+
+
+  if(prototype(tokens)){cout << "SUCCESS" << endl;}
+//  else {cout << "FAILURE" << endl;}
+
+  return 0;
+}
+
+vector<char*> parse(char *token){
+    vector<char*> t;
+    int SIZE = 0;
+
+    while(token[SIZE] != '\0'){
+      ++SIZE;
     }
+
+    for(int i = 0; i < SIZE; ++i){
+      if (token[i] == ' '){
+        token[i] = '-';
+      }
+    }
+
+    token = strtok(token, "-");
+
+    while(token != NULL){
+      t.push_back(token);
+      token = strtok(NULL, "-");
+    }
+    return t;
 }
 
-cmd = arr;
+bool prototype(vector<char*> toks){
+  pid_t pid;
+  pid_t wpid;
+  int status;
+  char *cmd[toks.size()];
 
-parse(cmd, tokens);
+//  cout << "CMD: " << endl;
+//  for(unsigned i = 0; i < toks.size(); ++i){
+//    cmd[i] = toks.at(i);
+//    cout << cmd[i] << endl;
+//  }
 
-int i = 0;
+  pid = fork();
+  if (pid < 0){
+          perror("FORK FAILURE");
+          exit(false);
+  }
 
-char* cmd1[64];
-
-for(unsigned j = 0; j < tokens.size(); ++j){
-  cout << tokens.at(j) << endl;
+  switch(pid){
+          case 0:
+        			execvp(cmd[0], cmd);
+        			perror("EXECVP FAILURE");
+        			exit(false);
+          default:
+                  while(!WIFEXITED(status) && !WIFSIGNALED(status)){
+                          wpid = waitpid(pid, &status, WUNTRACED);
+                  }
+  }
+	return true;
 }
 
-cmd1[0] = tokens.at(0);
-
-cout << cmd1[0] << endl;
-run = prototype(cmd1);
-
-return 0;
-
-}
-
-}
