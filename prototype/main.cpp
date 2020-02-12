@@ -50,7 +50,7 @@ vector<CMD*> parse(char* line){
 		
     	k = j;
     }
-    
+// still have to continue the strtok    
     
     return vec;
 }
@@ -106,14 +106,14 @@ for(int i = 0; i < 1024; ++i){
     cout << cmd[i] << endl;
 }
 
-args = parse(cmd);
+//args = parse(cmd);
 for(int i = 0; i < 10; ++i){
     if(*args[i] == '\0'){
             break;
        }
         cout << *args[i] << endl;
        }                   
-run = prototype(args);
+//run = prototype(args);
  }
 
       return 0;
