@@ -14,13 +14,14 @@ class Token : public CMD{
 		Token(char** arr) {
 			toks = arr;
 		};
-
+		void SetCmd(char **arr){cmdline = arr;};
 		virtual void display(){
         		cout << "TOKEN" <<endl;
 		};
 
 	protected:
-		char** toks;
+		char** toks = NULL;
+		char** cmdline = NULL;
 };
 
 #endif

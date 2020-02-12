@@ -13,17 +13,10 @@
 using namespace std;
 
 class CMD {
-protected:
-char **cmdline = NULL;
-
 public:
 virtual bool run() = 0;
 CMD();
-CMD(char** line){cmdline = line;};
-
-virtual void display(){
-	cout << "CMD" << endl;
-};
+virtual void display() = 0;
 
 };
 #endif

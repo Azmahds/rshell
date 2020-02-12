@@ -57,8 +57,8 @@ vector<CMD*> SetClasses(vector<char*> cline){
   }
   arr[cline.size()] = '\0';
 
-  CMD* temp = new CMD(arr);
-  cmd.push_back(temp);
+  Token* temp = new Token();
+  cmd.push_back(temp->SetCmd(arr));
 
 cout << cmd.at(0) << endl; 
 }
