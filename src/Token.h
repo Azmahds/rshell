@@ -14,6 +14,11 @@ class Token : public CMD{
 		Token(char** arr) {
 			toks = arr;
 		};
+
+		virtual void display(){
+        		cout << "TOKEN" <<endl;
+		};
+
 	protected:
 		char** toks;
 };

@@ -23,6 +23,10 @@ Or(char* arr){
     cons[1] = '\0'; 
 };
 
+virtual void display(){
+	cout << "OR" <<endl;
+};
+
 };
 
 #endif

@@ -23,6 +23,10 @@ And(char* arr){
      cons[1] = '\0';
 };
 
+virtual void display(){
+	cout << "AND" << endl;
+};
+
 };
 
 #endif
