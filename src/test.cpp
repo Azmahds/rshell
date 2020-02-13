@@ -9,9 +9,9 @@
 #include "CMD.h"
 #include "Token.h"
 #include "Connector.h"
-//#include "And.h"
+#include "And.h"
 #include "Or.h"
-//#include "Semicolon.h"
+#include "Semicolon.h"
 
 using namespace std;
 
@@ -34,8 +34,7 @@ int main(){
  	 }
   	 char **arr;
   	 arr = parse(input);
- 	if(prototype(arr)){cout << "SUCCESS" << endl;}
-	else{cout << "FAIL" << endl;}
+ 	if(prototype(arr)){}
   }
 
 
@@ -50,7 +49,7 @@ char** parse(string input){
    token[input.size()] = '\0';    
 
    vector<char*> t;
-  //  vector<CMD*> c;
+
     int SIZE = 0;	
     while(token[SIZE] != '\0'){
       ++SIZE;

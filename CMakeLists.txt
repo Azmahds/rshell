@@ -14,9 +14,15 @@ ADD_EXECUTABLE(test
     src/Connector.h
 )
 
-#ADD_EXECUTABLE(rshell
-#    main.cpp
-#)
+ADD_EXECUTABLE(rshell
+    main.cpp
+    src/Token.cpp
+    src/Or.cpp
+    src/And.cpp
+    src/Semicolon.cpp
+    src/CMD.h
+    src/Connector.h
+)
 
 
 TARGET_LINK_LIBRARIES(test gtest)
