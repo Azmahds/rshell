@@ -7,7 +7,7 @@ using namespace std;
 
 class Or : public Connector {
 public:
-virtual bool run();
+bool run();
 Or(){
 	char arr[3];
 	arr[0] = '|';
@@ -23,7 +23,7 @@ Or(char* arr){
     cons[1] = '\0'; 
 };
 
-virtual void display(){
+void display(){
 	cout << "OR" <<endl;
 };
 

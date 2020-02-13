@@ -18,7 +18,7 @@ class Token : public CMD{
 		bool run();
 		void SetCmd(char **arr){cmdline = arr;};
 		void display(){
- 		cout << "TOKEN" <<endl;
+        		cout << "TOKEN" <<endl;
 		};
 
 	protected:

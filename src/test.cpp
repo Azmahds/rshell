@@ -6,12 +6,12 @@
 #include <vector>
 #include <sys/wait.h>
 
-#include "src/CMD.h"
-#include "src/Token.h"
-#include "src/Connector.h"
-#include "src/And.h"
-#include "src/Or.h"
-#include "src/Semicolon.h"
+#include "CMD.h"
+#include "Token.h"
+#include "Connector.h"
+#include "And.h"
+#include "Or.h"
+#include "Semicolon.h"
 
 using namespace std;
 
@@ -58,9 +58,11 @@ vector<CMD*> SetClasses(vector<char*> cline){
   arr[cline.size()] = '\0';
 
   CMD* temp = new Token();
-  temp->SetCmd(arr);
-  cmd.push_back(temp);
- 
+//  temp->SetCmd(arr);
+//  cmd.push_back(temp);
+  
+
+  return cmd;  
 }
 	
 

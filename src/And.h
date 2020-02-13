@@ -7,7 +7,7 @@ using namespace std;
 
 class And : public Connector {
 public:
-virtual bool run();
+bool run();
 And() {
 	char arr[3];
 	arr[0] = '&';
@@ -23,7 +23,7 @@ And(char* arr){
      cons[1] = '\0';
 };
 
-virtual void display(){
+void display(){
 	cout << "AND" << endl;
 };
 
