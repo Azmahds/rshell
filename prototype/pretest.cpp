@@ -1,56 +1,93 @@
-//FOR TESTING WAITPID(), FORK(), AND EXECVP()
-
-#include <string>
 #include <iostream>
-#include <unistd.h>
-#include <sys/wait.h>
+#include <cstdlib>
+#include <string>
+#include <stack>
+#include <fstream>
+#include <sstream>
 
 using namespace std;
 
-bool prototype(char* cmd[]);
+void arithmeticExpression::buildTree(){
+  string s;
+  s = infix_to_postfix();
+  stack<TreeNode*> r;
 
-int main(){
-  char* cmd1[2];
-  char* cmd2[3];
-  char* cmd3[4];
+  for(unsigned i = 0; i < s.size(); ++i){
+    char l = 'a' + i;
+    TreeNode *temp = new TreeNode(s.at(i), l);
 
-  cmd1[0] = "ls";
-  cmd1[1] = 0;
-
-  cmd2[0] = "ls";
-  cmd2[1] = "-a";
-  cmd2[2] = 0;
-
-  cmd3[0] = "echo";
-  cmd3[1] = "TEST";
-  cmd3[2] = "FUNCTION";
-  cmd3[3] = 0;
-
-  cout << "STARTING TEST 1" << endl;
-  if(prototype(cmd1)){cout << "Success #1" << endl << endl;}
-
-  cout << "STARTING TEST 2" << endl;
-  if(prototype(cmd2)){cout << "Success #2" << endl << endl;}
-
-  cout << "STARTING TEST 3" << endl;
-  if(prototype(cmd3)){cout << "Success #3" << endl << endl;}
-
-  return 0;
+    if(priority(temp->data) == 0){
+      r.push(temp);
+    }
+    else{
+      temp ->right = r.top();
+      r.pop();
+      temp->left = r.top();
+      r.pop();
+      r.push(temp);
+    }
+  }
+  root = r.top();
+  r.pop();
 }
 
-bool prototype(char* cmd[]){
-  pid_t n;
-  int status;
 
-  n = fork();
+string arithmeticExpression::infix_to_postfix(){
+   stack<char> s;
+   ostringstream oss;
+   char c;
+   for(unsigned i = 0; i< infixExpression.size();++i){
+       c = infixExpression.at(i);
+       if(c == ' '){
+           continue;
+       }
+       if(c == '+' || c == '-' || c == '*' || c == '/' || c == '(' || c == ')'){ //c is an operator
+           if( c == '('){
+               s.push(c);
+           }
+           else if(c == ')'){
+               while(s.top() != '('){
+                   oss << s.top();
+                   s.pop();
+               }
+               s.pop();
+           }
+           else{
+               while(!s.empty() && priority(c) <= priority(s.top())){
+                   if(s.top() == '('){
+                       break;
+                   }
+                   oss << s.top();
+                   s.pop();
+               }
+               s.push(c);
+           }
+       }
+       else{ //c is an operand
+           oss << c;
+       }
+   }
+   while(!s.empty()){
+       oss << s.top();
+       s.pop();
+   }
+   return oss.str();
+ }
 
-  if(n != 0){
-    waitpid(0, &status, 0);
-    return true;
+void arithmeticExpression::infix(TreeNode *node){ //left cur right
+  if(node == NULL){
+    return;
   }
-  else{
-    int l = execvp(cmd[0], cmd);
-    if(l < 0){cout << "ERROR RUNNING" << endl;}
-    return false;
+
+  if(node->left != NULL){
+    cout << "(";
+    infix(node->left);
   }
-}
+
+  cout << node->data;
+
+  if(node->right != NULL){
+    infix(node->right);
+    cout << ")";
+  }
+
