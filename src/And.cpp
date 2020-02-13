@@ -24,3 +24,13 @@ bool And::run(){
 	}
 	return false;
 }
+
+
+void And::SetL(Token* L){
+	lhs = L;
+}
+
+void And::SetR(Token* R){
+	rhs = R;
+}
+

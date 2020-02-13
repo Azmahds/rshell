@@ -17,6 +17,9 @@ Semicolon(char* arr){
 
 void display();
 
+virtual void SetL(Token* L);
+
+
 
 };
 

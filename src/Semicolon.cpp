@@ -23,3 +23,10 @@ bool Semicolon::run(){
 
   
 }
+
+void Semicolon::SetL(Token* L){
+	lhs = L;
+}
+
+//virtual void SetR(Token* R);
+
