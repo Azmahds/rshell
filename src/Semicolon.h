@@ -8,24 +8,14 @@ using namespace std;
 class Semicolon : public Connector {
 public:
 bool run();
-Semicolon(){
-	char arr[2];
-	arr[0] = ';';
-	arr[1] = '\0';
-
-	char* arr1 = arr;
-	cons[0] = arr1;
-	cons[1] = '\0';
-};
+Semicolon();
 
 Semicolon(char* arr){
     cons[0] = arr;
-   cons[1] = '\0';
+    cons[1] = '\0';
 };
 
-void display(){
-        cout << "SEMICOLON" <<endl;
-};
+void display();
 
 
 };

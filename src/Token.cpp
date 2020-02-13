@@ -2,6 +2,21 @@
 
 using namespace std;
 
+
+Token::Token() : CMD() {toks = NULL; cmdline = NULL;}
+
+Token::Token(char** arr) : CMD(){
+                        toks = arr;
+}
+
+Token::~Token(){}
+
+Token& Token::operator=(const Token& t){return *this;}
+
+void Token::display(){
+	cout << "TOKEN" <<endl;
+}
+
 bool Token::run(){
   	pid_t pid;
         pid_t wpid;
@@ -25,7 +40,7 @@ bool Token::run(){
                         if(waitpid(pid, &status, WUNTRACED) < 0){
                         	perror("CHILD IN PROCESS");        
                         }
-			if(WIFEXITED(status){
+			if(WIFEXITED(status)){
 				return true;
 			}
         }

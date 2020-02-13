@@ -5,23 +5,18 @@ ADD_SUBDIRECTORY(googletest)
 SET(CMAKE_CXX_STANDARD 11)
 
 ADD_EXECUTABLE(test
-    test.cpp
-    CMD.h
-    Token.h
-    Token.cpp
-    Or.h
-    Or.cpp
-    And.h
-    And.cpp
-    Semicolon.h
-    Semicolon.cpp
-    Connector.h
-    Exit.h
+    src/test.cpp
+    src/Token.cpp
+    src/Or.cpp
+    src/And.cpp
+    src/Semicolon.cpp
+    src/CMD.h
+    src/Connector.h
 )
 
-ADD_EXECUTABLE(rshell
-    main.cpp
-)
+#ADD_EXECUTABLE(rshell
+#    main.cpp
+#)
 
 
 TARGET_LINK_LIBRARIES(test gtest)

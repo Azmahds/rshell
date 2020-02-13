@@ -9,17 +9,12 @@ using namespace std;
 
 class Token : public CMD{
 	public:
-		Token() : CMD() {toks = NULL; cmdline = NULL;};
-		Token(char** arr) : CMD(){
-			toks = arr;
-		};
-		~Token(){};
-		Token& operator=(const Token& t){return *this;};
+		Token();
+		Token(char** arr);
+		~Token();
+		Token& operator=(const Token& t);
 		bool run();
-		void SetCmd(char **arr){cmdline = arr;};
-		void display(){
-        		cout << "TOKEN" <<endl;
-		};
+		void display();
 
 	protected:
 		char** toks;

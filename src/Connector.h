@@ -8,12 +8,14 @@ using namespace std;
 
 class Connector : public CMD {
 public:
-bool run();
-Connector();
+virtual bool run() = 0;
+Connector() {};
 Connector(char* arr){
     cons[0] = arr;
     cons[1] = '\0';
 };
+~Connector(){};
+Connector& operator=(const Connector& c){return *this;};
 void SetL(Token* L){lhs = L;};
 void SetR(Token* R){rhs = R;};
 void display(){
