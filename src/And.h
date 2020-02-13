@@ -16,6 +16,10 @@ And(char* arr){
 
 void display();
 
+virtual void SetL(Token* L);
+virtual void SetR(Token* R);
+
+
 };
 
 #endif

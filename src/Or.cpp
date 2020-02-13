@@ -25,3 +25,11 @@ bool Or::run(){
 	}
 	return false;
 }
+
+void Or::SetL(Token* L){
+	lhs = L;
+}
+void Or::SetR(Token* R){
+	rhs = R;
+}
+

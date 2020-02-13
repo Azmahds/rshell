@@ -16,6 +16,10 @@ Or(char* arr){
     cons[1] = '\0'; 
 };
 
+virtual void SetL(Token* L);
+virtual void SetR(Token* R);
+
+
 void display();
 };
 #endif

@@ -16,8 +16,8 @@ Connector(char* arr){
 };
 ~Connector(){};
 Connector& operator=(const Connector& c){return *this;};
-void SetL(Token* L){lhs = L;};
-void SetR(Token* R){rhs = R;};
+virtual void SetL(Token* L)= 0;
+virtual void SetR(Token* R) = 0;
 void display(){
 	cout << "Connector" << endl;
 }
