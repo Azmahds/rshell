@@ -10,7 +10,7 @@ using namespace std;
 
 vector<char*> parse(char* token);
 
-bool prototype(vector<char*> toks);
+bool prototype(char **toks);
 
 int main(){
   char *cmd;
@@ -40,10 +40,22 @@ int main(){
 //   cout << tokens.at(j) << endl;
 //  }
 //  cout << "END VECTOR" << endl << endl;
+  char *arr1[3];
+  char *arr2[64];
+	
+  arr1[0] =  "ls";
+  arr1[1] =  "-a";
+  arr1[2] =  '\0';
 
+  arr2[0] =  "ls";
+  arr2[1] =  "-a";
+  arr2[2] =  "&&";
+  arr2[3] = "echo";
+  arr2[4] =  "hello";
+  arr2[5] = '\0';
 
-  if(prototype(tokens)){cout << "SUCCESS" << endl;}
-//  else {cout << "FAILURE" << endl;}
+  if(prototype(arr1)){cout << "SUCCESS" << endl;}
+  else {cout << "FAILURE" << endl;}
 
   return 0;
 }
@@ -71,34 +83,33 @@ vector<char*> parse(char *token){
     return t;
 }
 
-bool prototype(vector<char*> toks){
-  pid_t pid;
-  pid_t wpid;
-  int status;
-  char *cmd[toks.size()];
+bool prototype(char **toks){
+  	pid_t pid;
+        pid_t wpid;
+        int status;
 
-//  cout << "CMD: " << endl;
-//  for(unsigned i = 0; i < toks.size(); ++i){
-//    cmd[i] = toks.at(i);
-//    cout << cmd[i] << endl;
-//  }
+        pid = fork();
 
-  pid = fork();
-  if (pid < 0){
-          perror("FORK FAILURE");
-          exit(false);
-  }
-
-  switch(pid){
-          case 0:
-        			execvp(cmd[0], cmd);
-        			perror("EXECVP FAILURE");
-        			exit(false);
-          default:
-                  while(!WIFEXITED(status) && !WIFSIGNALED(status)){
-                          wpid = waitpid(pid, &status, WUNTRACED);
-                  }
-  }
+        if (pid < 0){
+                perror("FORK FAILURE");
+                exit(false);
+        }
+	
+        switch(pid){
+                case 0: 
+                        if(execvp(toks[0], toks) != 0){
+                        	perror("EXECVP FAILURE");
+                        	exit(false);
+                        }
+                        exit(true);
+		default:
+                        if(waitpid(pid, &status, WUNTRACED) < 0){
+                        	perror("CHILD IN PROCESS");        
+                        }
+			if(WIFEXITED(status)){
+				return true;
+			}
+        }
 	return true;
 }
 

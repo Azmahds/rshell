@@ -15,8 +15,8 @@ using namespace std;
 class CMD {
 public:
 CMD() = default;
-virtual ~CMD() = default;
-virtual CMD& operator=(const CMD& c) = default;
+virtual ~CMD(){};
+virtual CMD& operator=(const CMD& c){return *this;};
 virtual bool run() = 0;
 virtual void display() = 0;
 virtual void SetCmd(char** arr) = 0;

@@ -2,7 +2,7 @@
 
 using namespace std;
 
-virtual bool Token::run(){
+bool Token::run(){
   	pid_t pid;
         pid_t wpid;
         int status;
@@ -15,15 +15,19 @@ virtual bool Token::run(){
         }
 	
         switch(pid){
-                default:
-                        while(!WIFEXITED(status) && !WIFSIGNALED(status)){
-                                wpid = waitpid(pid, &status, WUNTRACED);
-                        }
                 case 0: 
-			//char *arr = toks;  
-			execvp(toks[0], cmdline);
-			perror("EXECVP FAILURE");
-			exit(false);
+                        if(execvp(toks[0], cmdline) != 0){
+                        	perror("EXECVP FAILURE");
+                        	exit(false);
+                        }
+                        exit(true);
+		default:
+                        if(waitpid(pid, &status, WUNTRACED) < 0){
+                        	perror("CHILD IN PROCESS");        
+                        }
+			if(WIFEXITED(status){
+				return true;
+			}
         }
 	return true;
 }

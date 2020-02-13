@@ -13,9 +13,11 @@ class Token : public CMD{
 		Token(char** arr) : CMD(){
 			toks = arr;
 		};
-		virtual bool run();
-		virtual void SetCmd(char **arr){cmdline = arr;};
-		virtual void display(){
+		~Token(){};
+		Token& operator=(const Token& t){return *this;};
+		bool run();
+		void SetCmd(char **arr){cmdline = arr;};
+		void display(){
         		cout << "TOKEN" <<endl;
 		};
 
