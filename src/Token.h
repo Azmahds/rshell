@@ -9,19 +9,19 @@ using namespace std;
 
 class Token : public CMD{
 	public:
-		virtual bool run();
-		Token();
-		Token(char** arr) {
+		Token() : CMD() {toks = NULL; cmdline = NULL;};
+		Token(char** arr) : CMD(){
 			toks = arr;
 		};
-		void SetCmd(char **arr){cmdline = arr;};
+		virtual bool run();
+		virtual void SetCmd(char **arr){cmdline = arr;};
 		virtual void display(){
         		cout << "TOKEN" <<endl;
 		};
 
 	protected:
-		char** toks = NULL;
-		char** cmdline = NULL;
+		char** toks;
+		char** cmdline;
 };
 
 #endif

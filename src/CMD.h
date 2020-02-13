@@ -14,9 +14,11 @@ using namespace std;
 
 class CMD {
 public:
+CMD() = default;
+virtual ~CMD() = default;
+virtual CMD& operator=(const CMD& c) = default;
 virtual bool run() = 0;
-CMD();
 virtual void display() = 0;
-
+virtual void SetCmd(char** arr) = 0;
 };
 #endif

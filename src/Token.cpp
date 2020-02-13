@@ -2,7 +2,7 @@
 
 using namespace std;
 
-bool Token::run(){
+virtual bool Token::run(){
   	pid_t pid;
         pid_t wpid;
         int status;

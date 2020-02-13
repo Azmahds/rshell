@@ -7,7 +7,7 @@ using namespace std;
 
 class Semicolon : public Connector {
 public:
-virtual bool run();
+bool run();
 Semicolon(){
 	char arr[2];
 	arr[0] = ';';
@@ -23,7 +23,7 @@ Semicolon(char* arr){
    cons[1] = '\0';
 };
 
-virtual void display(){
+void display(){
         cout << "SEMICOLON" <<endl;
 };
 

@@ -8,7 +8,7 @@ using namespace std;
 
 class Connector : public CMD {
 public:
-virtual bool run();
+bool run();
 Connector();
 Connector(char* arr){
     cons[0] = arr;
