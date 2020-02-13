@@ -10,15 +10,14 @@ using namespace std;
 class Token : public CMD{
 	public:
 		Token();
-		Token(char** arr);
+		Token(char* arr);
 		~Token();
 		Token& operator=(const Token& t);
 		bool run();
 		void display();
 
 	protected:
-		char** toks;
-		char** cmdline;
+		char* toks[1024];
 };
 
 #endif
