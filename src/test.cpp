@@ -29,7 +29,7 @@ int main(){
  	 cout << "$ ";
  	 getline(cin,input);
 
- 	 if(input == "exit"){
+ 	 if(input == "exit" || input == " exit" || input == "exit " || input == " exit "){
  	     break;
  	 }
   	 char **arr;
