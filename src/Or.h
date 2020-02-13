@@ -28,5 +28,4 @@ virtual void display(){
 };
 
 };
-
 #endif
