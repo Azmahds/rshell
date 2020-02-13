@@ -24,7 +24,7 @@ ADD_EXECUTABLE(rshell
     src/Semicolon.cpp
     src/CMD.h
     src/Connector.h
-    src/postfix.hpp
+    #src/postfix.hpp
 )
 
 
