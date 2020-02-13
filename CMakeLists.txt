@@ -12,6 +12,7 @@ ADD_EXECUTABLE(test
     src/Semicolon.cpp
     src/CMD.h
     src/Connector.h
+    src/postfix.hpp
 )
 
 ADD_EXECUTABLE(rshell
@@ -22,6 +23,7 @@ ADD_EXECUTABLE(rshell
     src/Semicolon.cpp
     src/CMD.h
     src/Connector.h
+    src/postfix.hpp
 )
 
 

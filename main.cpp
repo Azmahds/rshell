@@ -12,6 +12,7 @@
 #include "src/And.h"
 #include "src/Or.h"
 #include "src/Semicolon.h"
+#include "src/postfix.hpp"
 
 using namespace std;
 
