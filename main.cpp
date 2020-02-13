@@ -12,7 +12,7 @@
 #include "src/And.h"
 #include "src/Or.h"
 #include "src/Semicolon.h"
-#include "src/postfix.hpp"
+//#include "src/postfix.hpp"
 
 using namespace std;
 
@@ -77,11 +77,11 @@ vector<CMD*>  parse(string input){
 
    for(int i = 0; i < t.size(); ++i){
 	if(strcmp(t.at(i), aSym) == 0){
-	 temp = new Token(tok);
-	 c.push_back(temp);
-	 hs = temp; 
-	 temp = new And();
-	 temp->SetL(hs);
+//	 temp = new Token(tok);
+//	 c.push_back(temp);
+//	 hs = temp; 
+//	 temp = new And();
+//	 temp->SetL(hs);
 	 
 	}
 	else if(strcmp(t.at(i), oSym) == 0){

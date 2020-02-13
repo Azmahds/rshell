@@ -56,6 +56,12 @@ char** parse(string input){
     }
 
     for(int i = 0; i < SIZE; ++i){
+      if(token[i] == '"'){
+		for (int j = i+1; j <  SIZE; ++j){
+			if(token[j] == '"'){ i = j+1; break;}
+			++i;
+		}
+	}
       if (token[i] == ' '){
         token[i] = '+';
       }
