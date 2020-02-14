@@ -18,8 +18,8 @@ Connector(char* arr){
 Connector& operator=(const Connector& c){return *this;};
 virtual void SetL(Token* L)= 0;
 virtual void SetR(Token* R) = 0;
-void display(){
-	cout << "Connector" << endl;
+string display(){
+	return "CONNECTOR";
 }
 
 

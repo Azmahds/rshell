@@ -15,10 +15,10 @@ Semicolon(char* arr){
     cons[1] = '\0';
 };
 
-void display();
+string display();
 
 virtual void SetL(Token* L);
-
+virtual void SetR(Token* R);
 
 
 };

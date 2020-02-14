@@ -14,7 +14,7 @@ class Token : public CMD{
 		~Token();
 		Token& operator=(const Token& t);
 		bool run();
-		void display();
+		string display();
 
 	protected:
 		char* toks[1024];

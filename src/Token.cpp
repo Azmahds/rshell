@@ -37,8 +37,9 @@ Token::~Token(){}
 
 Token& Token::operator=(const Token& t){return *this;}
 
-void Token::display(){
-	cout << "TOKEN" <<endl;
+string Token::display(){
+	string t = "TOKEN";
+	return t;
 }
 
 bool Token::run(){

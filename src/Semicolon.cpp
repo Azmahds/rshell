@@ -12,8 +12,8 @@ Semicolon::Semicolon(){
 	cons[1] = '\0';
 }
 
-void Semicolon::display(){
-        cout << "SEMICOLON" <<endl;
+string Semicolon::display(){
+        return "SEMICOLON";
 }
 
 bool Semicolon::run(){
@@ -28,5 +28,7 @@ void Semicolon::SetL(Token* L){
 	lhs = L;
 }
 
-//virtual void SetR(Token* R);
+void Semicolon::SetR(Token* R){
+	rhs = R;
+}
 

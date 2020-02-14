@@ -20,6 +20,6 @@ virtual void SetL(Token* L);
 virtual void SetR(Token* R);
 
 
-void display();
+string display();
 };
 #endif
