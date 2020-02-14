@@ -1,0 +1,7 @@
+echo not really working right now
+exit
+echo hi # this should not show up
+#echo hello world
+ls && # echo hello
+ls -a # testing with semicolon;
+ls # && ##########
