@@ -33,7 +33,7 @@ void buildTree(){
 }
 */
 
-string infix_to_postfix(char** input){
+char** infix_to_postfix(char** input){
    stack<char*> s;
    ostringstream oss;
    int SIZE = 0;
@@ -82,14 +82,23 @@ string infix_to_postfix(char** input){
  	char *sum = new char[512];
         while (i1 < SIZE){
 	     strcat(sum, input[i1];
+	     if(i1+1 != SIZE){strcat(sum, ' ');}
 	     ++i1;
 	}
 	arr[index] = sum;
 	++index;
-   {
+   }
    arr[index] = '\0';
    SIZE = index;   
  
+
+
+
+
+
+
+
+
    for(unsigned i = 0; i < input.size();++i){
        c = input.at(i);
        if(c == ' '){
