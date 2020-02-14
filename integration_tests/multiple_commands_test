@@ -1,0 +1,9 @@
+echo not working fully with connectors yet so exiting now
+exit
+echo hi || echo hello
+ls -j && echo not working if this message executed
+ls -a && echo this command works if this message has executed
+ls && echo goodbye
+echo later
+exit && echo it should have stopped working by now
+

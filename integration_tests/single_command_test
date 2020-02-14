@@ -1,0 +1,7 @@
+echo hello world
+ls
+ls -a 
+lsjdfldkjs
+echo " exit "
+echo "it worked"
+exit
