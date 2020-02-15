@@ -12,6 +12,8 @@ class Exit : public Token{
                 bool run();
                 Exit() {ex[0] = '\n';};
 		Exit(char* arr[]) {ex[0] = '\n';};
+		virtual bool isCon(){return false;};
+		virtual bool isEx(){return true;};
 	Protected:
 	char* ex[6];
 };

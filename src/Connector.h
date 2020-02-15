@@ -16,17 +16,18 @@ Connector(char* arr){
 };
 ~Connector(){};
 Connector& operator=(const Connector& c){return *this;};
-virtual void SetL(Token* L)= 0;
-virtual void SetR(Token* R) = 0;
+virtual void SetL(CMD* L)= 0;
+virtual void SetR(CMD* R) = 0;
 string display(){
 	return "CONNECTOR";
 }
-
+virtual bool isCon(){return true;};
+virtual bool isEx(){return false;};
 
 protected:
 char* cons[2];
-Token* lhs;
-Token* rhs;
+CMD* lhs;
+CMD* rhs;
 };
 
 #endif

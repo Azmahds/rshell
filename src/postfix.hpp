@@ -1,3 +1,6 @@
+#ifndef POSTFIX_HPP_
+#define POSTFIX_HPP_
+
 #include <iostream>
 #include <cstdlib>
 #include <string>
@@ -5,33 +8,73 @@
 #include <fstream>
 #include <sstream>
 
+#include "CMD.h"
+#include "Token.h"
+#include "Connector.h"
+#include "And.h"
+#include "Or.h"
+#include "Semicolon.h"
+#include "Exit.h"
+
 using namespace std;
 
-/*
-void buildTree(){
-  string s;
-  s = infix_to_postfix();
-  stack<TreeNode*> r;
 
-  for(unsigned i = 0; i < s.size(); ++i){
-    char l = 'a' + i;
-    TreeNode *temp = new TreeNode(s.at(i), l);
+Base* buildTree(char** arr){
+  stack<Base*> s;
+  int SIZE = 0;
 
-    if(priority(temp->data) == 0){
-      r.push(temp);
+  while(arr[SIZE] != NULL){
+    ++SIZE:
+  }
+  ++SIZE;
+
+  char *aSym = (char*) "&&";
+  char *oSym = (char*) "||";
+  char *sSym = (char*) ";";
+  char *eSym = (char*) "exit";
+
+  for(unsigned i = 0; i < SIZE; ++i){
+    char *temp = arr[i];
+    if (strcmp(temp, eSym) == 0){
+      Base *t = new Exit();
+      s.push(t);
+    }
+    else if(strcmp(temp, aSym) == 0){
+      Base *t = new And()
+      t->SetR(s.top());
+      s.pop();
+      t->SetL(s.top());
+      s.pop();
+      s.push(t);
+    }
+
+    else if(strcmp(temp, oSym) == 0){
+      Base *t = new Or()
+      t->SetR(s.top());
+      s.pop();
+      t->SetL(s.top());
+      s.pop();
+      s.push(t);
+    }
+
+    else if(strcmp(temp, sSym) == 0){
+      Base *t = new Semicolon()
+      t->SetR(s.top());
+      s.pop();
+      t->SetL(s.top());
+      s.pop();
+      s.push(t);
     }
     else{
-      temp ->right = r.top();
-      r.pop();
-      temp->left = r.top();
-      r.pop();
-      r.push(temp);
+      Base* t = new Token(temp);
+      s.push(t);
     }
   }
-  root = r.top();
-  r.pop();
+  Base* t = s.top();
+  s.pop();
+
+  return t;
 }
-*/
 
 char** infix_to_postfix(char** input){
    stack<char*> s;
@@ -146,3 +189,6 @@ void infix(TreeNode *node){ //left cur right
   }
 }
 */
+
+
+#endif

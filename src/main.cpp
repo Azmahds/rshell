@@ -6,20 +6,20 @@
 #include <vector>
 #include <sys/wait.h>
 
-#include "src/CMD.h"
-#include "src/Token.h"
-#include "src/Connector.h"
-#include "src/And.h"
-#include "src/Or.h"
-#include "src/Semicolon.h"
-//#include "src/postfix.hpp"
+#include "CMD.h"
+#include "Token.h"
+#include "Connector.h"
+#include "And.h"
+#include "Or.h"
+#include "Semicolon.h"
 
 using namespace std;
 
-vector<CMD*> parse(string);
+char** parse(string);
 bool prototype(char** toks);
 
 int main(){
+  char *cmd;
   string input;
   bool run;
   vector<CMD*> command;
@@ -29,18 +29,19 @@ int main(){
  	 cout << "$ ";
  	 getline(cin,input);
 
- 	 if(input == "exit"){
+ 	 if(input == "exit" || input == " exit" || input == "exit " || input == " exit "){
  	     break;
  	 }
-  	 command = parse(input);
- 	//if(prototype(arr)){}
+  	 char **arr;
+  	 arr = parse(input);
+ 	if(prototype(arr)){}
   }
 
 
   return 0;
 }	
 
-vector<CMD*>  parse(string input){
+char** parse(string input){
    char *token = new char [input.size()];
    for(int i = 0; i < input.size(); ++i){
     	token[i] = input.at(i);
@@ -48,53 +49,38 @@ vector<CMD*>  parse(string input){
    token[input.size()] = '\0';    
 
    vector<char*> t;
-   vector<CMD*> c;
-			
+
     int SIZE = 0;	
     while(token[SIZE] != '\0'){
       ++SIZE;
     }
 
     for(int i = 0; i < SIZE; ++i){
+      if(token[i] == '"'){
+		token[i] = '+';
+		for (int j = i+1; j <  SIZE; ++j){
+			if(token[j] == '"'){ i = j+1; token[j] = '+'; break;}
+			++i;
+		}
+	}
       if (token[i] == ' '){
         token[i] = '+';
       }
     }
 
     token = strtok(token, "+");
-    int i = 0;
+    
     while(token != NULL){
       t.push_back(token);
       token = strtok(NULL, "+");
     }
     
-    vector<char*> tok;
-    char *aSym = (char*) "&&";
-    char *oSym = (char*) "||";
-    char *sSym = (char*) ";";
-    CMD* temp = NULL; 
-    Token* hs = NULL;
-
-   for(int i = 0; i < t.size(); ++i){
-	if(strcmp(t.at(i), aSym) == 0){
-//	 temp = new Token(tok);
-//	 c.push_back(temp);
-//	 hs = temp; 
-//	 temp = new And();
-//	 temp->SetL(hs);
-	 
-	}
-	else if(strcmp(t.at(i), oSym) == 0){
-
-        }
-	else if(strcmp(t.at(i), sSym) == 0){
-
-        }
-	tok.push_back(t.at(i));
-    }    
-
-    
-    return c;
+    char **array = new char*[t.size()];
+    for(unsigned i = 0; i < t.size(); ++i){
+         array[i] = t.at(i);
+    }
+    array[t.size()] = '\0';
+    return array;
 }
 
 
@@ -127,4 +113,3 @@ bool prototype(char** toks){
   }
 	return true;
 }
-

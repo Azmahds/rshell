@@ -19,5 +19,7 @@ virtual ~CMD(){};
 virtual CMD& operator=(const CMD& c){return *this;};
 virtual bool run() = 0;
 virtual string display() = 0;
+virtual bool isCon() = 0;
+virtual bool isEx() = 0;
 };
 #endif

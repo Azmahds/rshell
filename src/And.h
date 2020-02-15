@@ -16,9 +16,10 @@ And(char* arr){
 
 string display();
 
-virtual void SetL(Token* L);
-virtual void SetR(Token* R);
-
+virtual void SetL(CMD* L);
+virtual void SetR(CMD* R);
+virtual bool isCon(){return true;};
+virtual bool isEx(){return false;};
 
 };
 

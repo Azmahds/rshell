@@ -24,11 +24,11 @@ bool Semicolon::run(){
   
 }
 
-void Semicolon::SetL(Token* L){
+void Semicolon::SetL(CMD* L){
 	lhs = L;
 }
 
-void Semicolon::SetR(Token* R){
+void Semicolon::SetR(CMD* R){
 	rhs = R;
 }
 

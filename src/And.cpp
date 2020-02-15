@@ -26,11 +26,11 @@ bool And::run(){
 }
 
 
-void And::SetL(Token* L){
+void And::SetL(CMD* L){
 	lhs = L;
 }
 
-void And::SetR(Token* R){
+void And::SetR(CMD* R){
 	rhs = R;
 }
 

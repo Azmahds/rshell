@@ -25,6 +25,7 @@ int main(){
   vector<CMD*> command;
   vector<char*> t;
   
+
   while(input != "exit"){
  	 cout << "$ ";
  	 getline(cin,input);
@@ -36,7 +37,6 @@ int main(){
   	 arr = parse(input);
  	if(prototype(arr)){}
   }
-
 
   return 0;
 }	

@@ -26,10 +26,10 @@ bool Or::run(){
 	return false;
 }
 
-void Or::SetL(Token* L){
+void Or::SetL(CMD* L){
 	lhs = L;
 }
-void Or::SetR(Token* R){
+void Or::SetR(CMD* R){
 	rhs = R;
 }
 

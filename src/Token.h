@@ -15,6 +15,8 @@ class Token : public CMD{
 		Token& operator=(const Token& t);
 		bool run();
 		string display();
+		virtual bool isCon(){return false;};
+		virtual bool isEx(){return false;};
 
 	protected:
 		char* toks[1024];
