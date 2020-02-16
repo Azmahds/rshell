@@ -16,8 +16,8 @@ Connector(char* arr){
 };
 ~Connector(){};
 Connector& operator=(const Connector& c){return *this;};
-virtual void SetL(CMD* L)= 0;
-virtual void SetR(CMD* R) = 0;
+virtual void SetL(CMD* L){};
+virtual void SetR(CMD* R){};
 string display(){
 	return "CONNECTOR";
 }

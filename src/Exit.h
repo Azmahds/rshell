@@ -5,16 +5,18 @@
 
 #include <iostream>
 
-usign namespace std;
+using namespace std;
 
 class Exit : public Token{
         public:
                 bool run();
-                Exit() {ex[0] = '\n';};
-		Exit(char* arr[]) {ex[0] = '\n';};
+                Exit() {ex[0] = '\0';};
+		Exit(char* arr[]) {ex[0] = '\0';};
 		virtual bool isCon(){return false;};
 		virtual bool isEx(){return true;};
-	Protected:
+		virtual void SetL(CMD* L){};
+		virtual void SetR(CMD* R){};
+	protected:
 	char* ex[6];
 };
 

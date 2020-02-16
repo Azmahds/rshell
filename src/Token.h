@@ -17,6 +17,8 @@ class Token : public CMD{
 		string display();
 		virtual bool isCon(){return false;};
 		virtual bool isEx(){return false;};
+		virtual void SetL(CMD* L){};
+		virtual void SetR(CMD* R){};
 
 	protected:
 		char* toks[1024];

@@ -21,5 +21,7 @@ virtual bool run() = 0;
 virtual string display() = 0;
 virtual bool isCon() = 0;
 virtual bool isEx() = 0;
+virtual void SetL(CMD* L) = 0;
+virtual void SetR(CMD* R) = 0;
 };
 #endif
