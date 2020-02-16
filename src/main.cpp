@@ -33,8 +33,14 @@ int main(){
  	     break;
  	 }
   	 char **arr;
-  	 arr = parse(input);
- 	if(prototype(arr)){}
+  	 arr = parse(input); 
+	
+	int i = 0;
+	while(arr[i] != '\0' ){
+		cout << arr[i] << endl;
+		i++;
+	}
+ //	if(prototype(arr)){}
   }
 
 
@@ -42,11 +48,21 @@ int main(){
 }	
 
 char** parse(string input){
-   char *token = new char [input.size()];
+   char *token = new char [input.size() * 2];
+
+   
+   int j = 0;
    for(int i = 0; i < input.size(); ++i){
-    	token[i] = input.at(i);
+    	token[j] = input.at(i);
+	++j;
+	if(i+1 < input.size()){
+		if(input.at(i+1) == ';'){
+         	   token[j] = ' ';
+          	   ++j;
+        	}
+	}
    }
-   token[input.size()] = '\0';    
+   token[j] = '\0';    
 
    vector<char*> t;
 
