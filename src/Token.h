@@ -19,9 +19,12 @@ class Token : public CMD{
 		virtual bool isEx(){return false;};
 		virtual void SetL(CMD* L){};
 		virtual void SetR(CMD* R){};
-		virtual CMD* GetL(){return NULL};
-		virtual CMD* GetR(){return NULL};
-
+		virtual CMD* GetL(){return NULL;};
+		virtual CMD* GetR(){return NULL;};
+		virtual bool isAnd(){return false;};
+		virtual bool isOr(){return  false;};
+		virtual bool isSemicolon(){return false;};
+		
 	protected:
 		char* toks[1024];
 };

@@ -25,5 +25,8 @@ virtual void SetL(CMD* L) = 0;
 virtual void SetR(CMD* R) = 0;
 virtual CMD* GetL() = 0;
 virtual CMD* GetR() = 0;
+virtual bool isAnd()=0;
+virtual bool isOr()=0;
+virtual bool isSemicolon()=0;
 };
 #endif

@@ -76,101 +76,7 @@ CMD* buildTree(char** arr){
 
   return t;
 }
-/*
-char** infix_to_postfix(char** input){
-   stack<char*> s;
-   ostringstream oss;
-   int SIZE = 0;
-   
-   while(input[i] != NULL){
-	++SIZE;
-   }
-   
-   int index = 0;
-   int i1 = 0;
-   char *arr[SIZE];
-   char *aSym = (char*) "&&";
-   char *oSym = (char*) "||";
-   char *sSym = (char*) ";"; 
 
-   for(int i = 0; i < SIZE; ++i){
-	if(strcmp(input[i], aSym) == 0){
- 	    char *sum = new char[512];
-	    for(int l = i1; l < i; ++l){
-		strcat(sum, input[l]);
-		if(l+1 !=  i){strcat(sum, ' ');}
-	    }
-            i1 = i + 1;
-	    arr[index] = sum;
-	    ++index;
-	    arr[index] = new (char*) "&&";
-	    ++index;
-        }
-        else if(strcmp(input[i], oSym) == 0){
-	    char *sum  = new  char[512];
-            for(int l = i1; l < i; ++l){
-                strcat(sum, input[l]);
-                if(l+1 !=  i){strcat(sum, ' ');}
-            }
-            i1 = i + 1;
-            arr[index] = sum;
-            ++index;
-	    arr[index] = new (char*) "||";
-            ++index;
-        }
-        else if(strcmp(input[i], sSym) == 0){
-		cout << "L SNZ BOIZZZZ" << endl;
-        }	
-   }
-   if(i1 < SIZE){
- 	char *sum = new char[512];
-        while (i1 < SIZE){
-	     strcat(sum, input[i1];
-	     if(i1+1 != SIZE){strcat(sum, ' ');}
-	     ++i1;
-	}
-	arr[index] = sum;
-	++index;
-   }
-   arr[index] = '\0';
-   SIZE = index;   
- 
-
-
-
-
-
-
-
-
-   for(unsigned i = 0; i < input.size();++i){
-       c = input.at(i);
-       if(c == ' '){
-           continue;
-       }
-       if(c == '+' || c == '-' || c == '*' || c == '/' || c == '(' || c == ')'){ //c is an operator
-             while(!s.empty() && priority(c) <= priority(s.top())){
-                 if(s.top() == '('){
-                     break;
-                 }
-                 oss << s.top();
-                 s.pop();
-             }
-             s.push(c);
-           
-       }
-       else{ //c is an operand
-           oss << c;
-       }
-   }
-   while(!s.empty()){
-       oss << s.top();
-       s.pop();
-   }
-   return oss.str();
- }
-
-*/
 bool runTree(CMD* root){
   CMD* t = root;
   CMD* tL = root->GetL();
@@ -198,7 +104,7 @@ bool runTree(CMD* root){
     }
     else{
       bool tf = tL->run();
-      if(tf){return true}
+      if(tf){return true;}
       return tR->run();
     }
   }
@@ -213,6 +119,124 @@ bool runTree(CMD* root){
   }
   return t->run();
 }
+
+
+
+
+
+
+char** infix_to_postfix(char** input){
+int SIZE = 0;
+
+
+while(input[SIZE] != NULL){
+++SIZE;
+}
+++SIZE; 
+
+int index = 0;
+int i1 = 0;
+char **arr = new char* [SIZE];
+char *aSym = (char*) "&&";
+char *oSym = (char*) "||";
+char *sSym = (char*) ";"; 
+
+
+
+
+for(int i = 0; i < SIZE; ++i){ 
+    
+     if(strcmp(input[i], aSym) == 0){
+        char *sum = new char[512];
+        for(int l = i1; l < i; ++l){
+        strcat(sum, input[l]);
+        if(l+1 !=  i){strcat(sum, " ");}
+        }
+            i1 = i + 1;
+        arr[index] = sum;
+        ++index;
+        char* add = new char[3];
+
+        add[0] = '&';
+        add[1] = '&';
+        add[2] = '\0';
+        arr[index] = add;
+        ++index;
+    }
+    else if(strcmp(input[i], oSym) == 0){
+    char *sum  = new  char[512];
+        for(int l = i1; l < i; ++l){
+            strcat(sum, input[l]);
+            if(l+1 !=  i){strcat(sum, " ");}
+        }
+        i1 = i + 1;
+        arr[index] = sum;
+        ++index;
+        char* add = new char[3];
+
+        add[0] = '|';
+        add[1] = '|';
+        add[2] = '\0';
+        arr[index] = add;
+        ++index;
+    }
+    else if(strcmp(input[i], sSym) == 0){
+    char *sum  = new  char[512];
+        for(int l = i1; l < i; ++l){
+            strcat(sum, input[l]);
+            if(l+1 !=  i){strcat(sum, " ");}
+        }
+        i1 = i + 1;
+        arr[index] = sum;
+        ++index;
+        char* add = new char[2];
+
+        add[0] = ';';
+        add[1] = '\0';
+        arr[index] = add;
+        ++index;
+    }	
+}
+
+
+if(i1 < SIZE){
+char *sum = new char[512];
+    while (i1 < SIZE){
+        strcat(sum, input[i1]);
+        if(i1+1 != SIZE){strcat(sum, " ");}
+        ++i1;
+	}
+
+arr[index] = sum;
+++index;
+}
+
+arr[index] = '\0';
+SIZE = index; 
+
+
+for(int i =0; i < SIZE-1; ++i){
+    if((arr[i] == "&&" || arr[i] == "||" || arr[i] == ";") && (i+1 < SIZE-1)){
+        swap(arr[i], arr[i+1]);
+        if(i+2 < SIZE-1){
+            i = i + 1 ;
+        }
+    }
+}
+
+return arr;
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 #endif
