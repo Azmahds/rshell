@@ -21,6 +21,11 @@ virtual void SetL(CMD* L);
 virtual void SetR(CMD* R);
 virtual bool isCon(){return true;};
 virtual bool isEx(){return false;};
+virtual CMD* GetL(){return lhs};
+virtual CMD* GetR(){return rhs;
+virtual bool isAnd(){return false};
+virtual bool isOr(){return  false};
+virtual bool isSemicolon(){return true};
 
 };
 

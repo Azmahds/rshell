@@ -16,6 +16,8 @@ class Exit : public Token{
 		virtual bool isEx(){return true;};
 		virtual void SetL(CMD* L){};
 		virtual void SetR(CMD* R){};
+		virtual CMD* GetL(){return NULL};
+                virtual CMD* GetR(){return NULL};
 	protected:
 	char* ex[6];
 };

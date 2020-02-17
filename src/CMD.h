@@ -23,5 +23,7 @@ virtual bool isCon() = 0;
 virtual bool isEx() = 0;
 virtual void SetL(CMD* L) = 0;
 virtual void SetR(CMD* R) = 0;
+virtual CMD* GetL() = 0;
+virtual CMD* GetR() = 0;
 };
 #endif

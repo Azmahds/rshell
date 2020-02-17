@@ -23,11 +23,16 @@ string display(){
 }
 virtual bool isCon(){return true;};
 virtual bool isEx(){return false;};
+virtual CMD* GetL(){return lhs};
+virtual CMD* GetR(){return rhs;
+virtual bool isAnd()=0;
+virtual bool isOr()=0;
+virtual bool isSemicolon()=0;
 
 protected:
 char* cons[2];
-CMD* lhs;
-CMD* rhs;
+CMD* lhs = NULL;
+CMD* rhs = NULL;
 };
 
 #endif

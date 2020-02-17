@@ -171,25 +171,48 @@ char** infix_to_postfix(char** input){
  }
 
 */
-/*
-void infix(TreeNode *node){ //left cur right
-  if(node == NULL){
-    return;
+bool runTree(CMD* root){
+  CMD* t = root;
+  CMD* tL = root->GetL();
+  CMD* tR = root->GetR();
+  bool ran = true;
+
+  if(tL != NULL && tL->isCon() == true){
+    ran = runTree(tL);
   }
 
-  if(node->left != NULL){
-    cout << "(";
-    infix(node->left);
+  if(t->isAnd()){
+    if(tL->isCon()){
+      if(ran){return tR->run();}
+    }
+    else{
+      bool tf = tL->run();
+      if(tf){return tR->run();}
+      return false;
+    }
   }
-
-  cout << node->data;
-
-  if(node->right != NULL){
-    infix(node->right);
-    cout << ")";
+  else if(t->isOr()){
+    if(tL->isCon()){
+      if(ran){return true;}
+      else{return tR->run();}
+    }
+    else{
+      bool tf = tL->run();
+      if(tf){return true}
+      return tR->run();
+    }
   }
+  else if(t->isSemicolon()){
+    if(tL->isCon()){
+      return tR->run();
+    }
+    else{
+      tL->run();
+      return tR->run();
+    }
+  }
+  return t->run();
 }
-*/
 
 
 #endif
