@@ -7,6 +7,7 @@
 #include <stack>
 #include <fstream>
 #include <sstream>
+#include <cstring>
 
 #include "CMD.h"
 #include "Token.h"
@@ -19,12 +20,12 @@
 using namespace std;
 
 
-Base* buildTree(char** arr){
-  stack<Base*> s;
+CMD* buildTree(char** arr){
+  stack<CMD*> s;
   int SIZE = 0;
 
   while(arr[SIZE] != NULL){
-    ++SIZE:
+    ++SIZE;
   }
   ++SIZE;
 
@@ -36,11 +37,11 @@ Base* buildTree(char** arr){
   for(unsigned i = 0; i < SIZE; ++i){
     char *temp = arr[i];
     if (strcmp(temp, eSym) == 0){
-      Base *t = new Exit();
+      CMD *t = new Exit();
       s.push(t);
     }
     else if(strcmp(temp, aSym) == 0){
-      Base *t = new And()
+      CMD *t = new And();
       t->SetR(s.top());
       s.pop();
       t->SetL(s.top());
@@ -49,7 +50,7 @@ Base* buildTree(char** arr){
     }
 
     else if(strcmp(temp, oSym) == 0){
-      Base *t = new Or()
+      CMD *t = new Or();
       t->SetR(s.top());
       s.pop();
       t->SetL(s.top());
@@ -58,7 +59,7 @@ Base* buildTree(char** arr){
     }
 
     else if(strcmp(temp, sSym) == 0){
-      Base *t = new Semicolon()
+      CMD *t = new Semicolon();
       t->SetR(s.top());
       s.pop();
       t->SetL(s.top());
@@ -66,16 +67,16 @@ Base* buildTree(char** arr){
       s.push(t);
     }
     else{
-      Base* t = new Token(temp);
+      CMD* t = new Token(temp);
       s.push(t);
     }
   }
-  Base* t = s.top();
+  CMD* t = s.top();
   s.pop();
 
   return t;
 }
-
+/*
 char** infix_to_postfix(char** input){
    stack<char*> s;
    ostringstream oss;
@@ -169,26 +170,49 @@ char** infix_to_postfix(char** input){
    return oss.str();
  }
 
-
-/*
-void infix(TreeNode *node){ //left cur right
-  if(node == NULL){
-    return;
-  }
-
-  if(node->left != NULL){
-    cout << "(";
-    infix(node->left);
-  }
-
-  cout << node->data;
-
-  if(node->right != NULL){
-    infix(node->right);
-    cout << ")";
-  }
-}
 */
+bool runTree(CMD* root){
+  CMD* t = root;
+  CMD* tL = root->GetL();
+  CMD* tR = root->GetR();
+  bool ran = true;
+
+  if(tL != NULL && tL->isCon() == true){
+    ran = runTree(tL);
+  }
+
+  if(t->isAnd()){
+    if(tL->isCon()){
+      if(ran){return tR->run();}
+    }
+    else{
+      bool tf = tL->run();
+      if(tf){return tR->run();}
+      return false;
+    }
+  }
+  else if(t->isOr()){
+    if(tL->isCon()){
+      if(ran){return true;}
+      else{return tR->run();}
+    }
+    else{
+      bool tf = tL->run();
+      if(tf){return true}
+      return tR->run();
+    }
+  }
+  else if(t->isSemicolon()){
+    if(tL->isCon()){
+      return tR->run();
+    }
+    else{
+      tL->run();
+      return tR->run();
+    }
+  }
+  return t->run();
+}
 
 
 #endif
