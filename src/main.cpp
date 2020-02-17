@@ -28,18 +28,31 @@ int main(){
   while(input != "exit"){
  	 cout << "$ ";
  	 getline(cin,input);
-
+	 string s;
+	 char space = ' ';
+	 for(int i = 0; i < input.size(); ++i){
+		s.push_back(input.at(i));
+		if( i+1 < input.size() && input.at(i+1) == ';'){
+			s.push_back(space);
+		}
+         } 
+	 if(s.at(s.size()-1) == ';'){
+		s.push_back(space);
+	 }
  	 if(input == "exit" || input == " exit" || input == "exit " || input == " exit "){
  	     break;
  	 }
   	 char **arr;
-  	 arr = parse(input); 
 	
-	int i = 0;
-	while(arr[i] != '\0' ){
-		cout << arr[i] << endl;
-		i++;
-	}
+ 	cout << s << endl;  
+
+	 arr = parse(s); 
+	
+//	int i = 0;
+//	while(arr[i] != '\0' ){
+//		cout << arr[i] << endl;
+//		i++;
+//	}
  //	if(prototype(arr)){}
   }
 
@@ -47,50 +60,46 @@ int main(){
   return 0;
 }	
 
-char** parse(string input){
-   char *token = new char [input.size() * 2];
 
-   
-   int j = 0;
+
+
+
+
+
+char** parse(string input){
+   char *token = new char [input.size()];
    for(int i = 0; i < input.size(); ++i){
-    	token[j] = input.at(i);
-	++j;
-	if(i+1 < input.size()){
-		if(input.at(i+1) == ';'){
-         	   token[j] = ' ';
-          	   ++j;
-        	}
-	}
+        token[i] = input.at(i);
    }
-   token[j] = '\0';    
+   token[input.size()] = '\0';
 
    vector<char*> t;
 
-    int SIZE = 0;	
+    int SIZE = 0;
     while(token[SIZE] != '\0'){
       ++SIZE;
     }
 
     for(int i = 0; i < SIZE; ++i){
       if(token[i] == '"'){
-		token[i] = '+';
-		for (int j = i+1; j <  SIZE; ++j){
-			if(token[j] == '"'){ i = j+1; token[j] = '+'; break;}
-			++i;
-		}
-	}
+                token[i] = '+';
+                for (int j = i+1; j <  SIZE; ++j){
+                        if(token[j] == '"'){ i = j+1; token[j] = '+'; break;}
+                        ++i;
+                }
+        }
       if (token[i] == ' '){
         token[i] = '+';
       }
     }
 
     token = strtok(token, "+");
-    
+
     while(token != NULL){
       t.push_back(token);
       token = strtok(NULL, "+");
     }
-    
+
     char **array = new char*[t.size()];
     for(unsigned i = 0; i < t.size(); ++i){
          array[i] = t.at(i);
@@ -98,6 +107,7 @@ char** parse(string input){
     array[t.size()] = '\0';
     return array;
 }
+
 
 
 
