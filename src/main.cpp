@@ -44,7 +44,7 @@ int main(){
  	 }
   	 char **arr;
 	
- 	cout << s << endl;  
+ 	cout << "OUTPUTTING WHAT IS IN INPUT AFTER EXC" <<s << endl;  
 
 	 arr = parse(s); 
 	
@@ -67,11 +67,11 @@ int main(){
 
 
 char** parse(string input){
-   char *token = new char [input.size()];
+   char *token = new char [input.size()+1];
    for(int i = 0; i < input.size(); ++i){
         token[i] = input.at(i);
    }
-   token[input.size()] = '\0';
+   token[input.size()+1] = '\0';
 
    vector<char*> t;
 
