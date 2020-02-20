@@ -33,11 +33,11 @@ int main(){
  	 cout << "$ ";
  	 getline(cin,input);
 	 string s;
-	 char space = ' ';
+	 //char space = ' ';
 	 for(int i = 0; i < input.size(); ++i){
 		s.push_back(input.at(i));
 		if( i+1 < input.size() && input.at(i+1) == ';'){
-			s.push_back(space);
+			s.push_back(' ');
 		}
          } 
 //	 if(s.at(s.size()-1) == ';'){
@@ -50,8 +50,15 @@ int main(){
 	
  	cout << "OUTPUTTING WHAT IS IN INPUT AFTER EXC: 	" <<s << endl;  
 
-	 arr = parse(s); 
-	
+	 arr = parse(s);
+
+
+
+
+
+
+//	delete [] token; 
+	delete [] arr;	
 //	int i = 0;
 //	while(arr[i] != '\0' ){
 //		cout << arr[i] << endl;
@@ -72,7 +79,7 @@ int main(){
 
 char** parse(string input){
    int SIZE = 0;
-   char *token = new char [input.size()];
+   char *token = new char [input.size() + 1];
    for(int i = 0; i < input.size(); ++i){
         token[i] = input.at(i);
 	cout << SIZE << ":   " << token[SIZE] << endl;
@@ -118,12 +125,13 @@ char** parse(string input){
       t.push_back(token);
       token = strtok(NULL, "+");
     }
-
-    char **array = new char*[t.size()];
+   
+   delete [] token;
+    char **array = new char*[t.size() + 1];
     for(unsigned i = 0; i < t.size(); ++i){
          array[i] = t.at(i);
     }
-    array[t.size()] = '\0';
+    array[t.size()] = NULL;
     return array;
 }
 
