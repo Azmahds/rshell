@@ -19,6 +19,10 @@ ADD_EXECUTABLE(rshell
     #src/postfix.hpp
 )
 
+ADD_EXECUTABLE(hello
+	src/main.cpp
+)
+
 
 TARGET_LINK_LIBRARIES(test gtest)
 TARGET_COMPILE_DEFINITIONS(test PRIVATE gtest_disable_pthreads=ON)

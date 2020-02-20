@@ -5,6 +5,8 @@
 #include <iostream>
 #include <vector>
 #include <sys/wait.h>
+#include <string>
+
 
 #include "CMD.h"
 #include "Token.h"
@@ -13,10 +15,12 @@
 #include "Or.h"
 #include "Semicolon.h"
 
+
 using namespace std;
 
 char** parse(string);
 bool prototype(char** toks);
+
 
 int main(){
   char *cmd;
@@ -36,15 +40,15 @@ int main(){
 			s.push_back(space);
 		}
          } 
-	 if(s.at(s.size()-1) == ';'){
-		s.push_back(space);
-	 }
+//	 if(s.at(s.size()-1) == ';'){
+//		s.push_back(space);
+//	 }
  	 if(input == "exit" || input == " exit" || input == "exit " || input == " exit "){
  	     break;
  	 }
   	 char **arr;
 	
- 	cout << "OUTPUTTING WHAT IS IN INPUT AFTER EXC" <<s << endl;  
+ 	cout << "OUTPUTTING WHAT IS IN INPUT AFTER EXC: 	" <<s << endl;  
 
 	 arr = parse(s); 
 	
@@ -67,18 +71,33 @@ int main(){
 
 
 char** parse(string input){
-   char *token = new char [input.size()+1];
+   int SIZE = 0;
+   char *token = new char [input.size()];
    for(int i = 0; i < input.size(); ++i){
         token[i] = input.at(i);
+	cout << SIZE << ":   " << token[SIZE] << endl;
+	SIZE++;
    }
-   token[input.size()+1] = '\0';
+   token[input.size()] = '\0';
 
    vector<char*> t;
 
-    int SIZE = 0;
-    while(token[SIZE] != '\0'){
-      ++SIZE;
-    }
+ //   int SIZE = 0;
+ //   while(token[SIZE] != '\0'){
+        cout << SIZE << ":   " << token[SIZE] << endl;
+//	++SIZE;
+//    }
+   	
+	cout << "INPUT SIZE IS EQUAL TO :      " << input.size() << endl;
+
+	cout << "CONTENTS OF INPUT:	" << input << endl;	
+
+	cout << "SIZE VALUE IS EQUAL TO :      " << SIZE << endl;
+
+
+	if(input.size() == SIZE){
+		cout << "\n THE SIZES ARE EQUAL " << input.size() << "    ==       " << SIZE << endl;
+	}
 
     for(int i = 0; i < SIZE; ++i){
       if(token[i] == '"'){
@@ -139,3 +158,7 @@ bool prototype(char** toks){
   }
 	return true;
 }
+
+
+
+
