@@ -12,7 +12,7 @@ virtual bool run() = 0;
 Connector() {};
 Connector(char* arr){
     cons[0] = arr;
-    cons[1] = '\0';
+    cons[1] = NULL;
 };
 ~Connector(){};
 Connector& operator=(const Connector& c){return *this;};

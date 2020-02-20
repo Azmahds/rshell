@@ -13,7 +13,7 @@ Or();
 Or& operator=(const Or& o){return *this;};
 Or(char* arr){
     cons[0] = arr;
-    cons[1] = '\0'; 
+    cons[1] = NULL; 
 };
 
 virtual void SetL(CMD* L);

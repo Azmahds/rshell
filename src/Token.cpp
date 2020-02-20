@@ -28,7 +28,7 @@ Token::Token(char*  arr) : CMD(){
 		++i;
 	}
 	
-	toks[i] = '\0';
+	toks[i] = NULL;
 
 }
 
