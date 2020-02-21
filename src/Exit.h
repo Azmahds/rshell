@@ -9,9 +9,11 @@ using namespace std;
 
 class Exit : public Token{
         public:
-                bool run();
-                Exit() {ex[0] = '\0';};
-		Exit(char* arr[]) {ex[0] = '\0';};
+                bool run() { return false; }
+                Exit(){ex[0] = NULL;};
+		~Exit(){};
+		Exit& operator=(const Exit& e){return *this;};
+		string display(){ return "TODO"; };
 		virtual bool isCon(){return false;};
 		virtual bool isEx(){return true;};
 		virtual void SetL(CMD* L){};

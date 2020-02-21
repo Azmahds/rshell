@@ -11,7 +11,7 @@ class Token : public CMD{
 	public:
 		Token();
 		Token(char* arr);
-		~Token();
+		~Token(); // implemented
 		Token& operator=(const Token& t);
 		bool run();
 		string display();

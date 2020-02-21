@@ -20,7 +20,14 @@ ADD_EXECUTABLE(rshell
 )
 
 ADD_EXECUTABLE(hello
-	src/main.cpp
+    src/main.cpp
+    src/Token.cpp
+    src/Or.cpp
+    src/And.cpp
+    src/Semicolon.cpp
+    src/Exit.h
+    src/CMD.h
+    src/Connector.h
 )
 
 

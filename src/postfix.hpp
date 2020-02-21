@@ -1,3 +1,4 @@
+
 #ifndef POSTFIX_HPP_
 #define POSTFIX_HPP_
 
@@ -122,9 +123,6 @@ bool runTree(CMD* root){
 
 
 
-
-
-
 char** infix_to_postfix(char** input){
 int SIZE = 0;
 
@@ -132,20 +130,19 @@ int SIZE = 0;
 while(input[SIZE] != NULL){
 ++SIZE;
 }
-++SIZE; 
+++SIZE;
 
 int index = 0;
 int i1 = 0;
 char **arr = new char* [SIZE];
 char *aSym = (char*) "&&";
 char *oSym = (char*) "||";
-char *sSym = (char*) ";"; 
+char *sSym = (char*) ";";
 
 
 
+for(int i = 0; i < SIZE-1; ++i){
 
-for(int i = 0; i < SIZE; ++i){ 
-    
      if(strcmp(input[i], aSym) == 0){
         char *sum = new char[512];
         for(int l = i1; l < i; ++l){
@@ -195,15 +192,14 @@ for(int i = 0; i < SIZE; ++i){
         add[1] = '\0';
         arr[index] = add;
         ++index;
-    }	
+    }
 }
 
-
-if(i1 < SIZE){
+if(i1 < SIZE-1){
 char *sum = new char[512];
-    while (i1 < SIZE){
+    while (i1 < SIZE-1){
         strcat(sum, input[i1]);
-        if(i1+1 != SIZE){strcat(sum, " ");}
+        if(i1+1 != SIZE-1){strcat(sum, " ");}
         ++i1;
 	}
 
@@ -211,14 +207,13 @@ arr[index] = sum;
 ++index;
 }
 
-arr[index] = '\0';
-SIZE = index; 
+arr[index] = NULL;
+SIZE = index;
 
-
-for(int i =0; i < SIZE-1; ++i){
-    if((arr[i] == "&&" || arr[i] == "||" || arr[i] == ";") && (i+1 < SIZE-1)){
+for(int i =0; i < SIZE; ++i){
+    if(((strcmp(arr[i], aSym) == 0) || (strcmp(arr[i], oSym) == 0) || (strcmp(arr[i], sSym) == 0)) && (i+1 < SIZE)){
         swap(arr[i], arr[i+1]);
-        if(i+2 < SIZE-1){
+        if(i+2 < SIZE){
             i = i + 1 ;
         }
     }
@@ -227,6 +222,7 @@ for(int i =0; i < SIZE-1; ++i){
 return arr;
 
 }
+
 
 I
 
@@ -244,11 +240,6 @@ I
 
 
 
-
-
-
-
-
 for(int i =0; i < SIZE-1; ++i){
     if((arr[i] == "&&" || arr[i] == "||" || arr[i] == ";") && (i+1 < SIZE-1)){
         swap(arr[i], arr[i+1]);
@@ -265,9 +256,5 @@ return arr;
 I
 
 
-
-
-
-
-
 #endif
+
