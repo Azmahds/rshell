@@ -228,10 +228,41 @@ return arr;
 
 }
 
+I
+
+
+
+//------------------CHANGING THIS PART TO PREFIX INSTEAD OF POSTFIX----------
+
+
+
+// to change to prefix you need to first reverse the array
+// switch the paranthesis to face the oppisite way
+// get the postfix expression of new revesrse
+// after the postfix is done reverse that 
 
 
 
 
+
+
+
+
+
+for(int i =0; i < SIZE-1; ++i){
+    if((arr[i] == "&&" || arr[i] == "||" || arr[i] == ";") && (i+1 < SIZE-1)){
+        swap(arr[i], arr[i+1]);
+        if(i+2 < SIZE-1){
+            i = i + 1 ;
+        }
+    }
+}
+
+return arr;
+
+}
+
+I
 
 
 
