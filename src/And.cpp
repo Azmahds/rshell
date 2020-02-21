@@ -18,8 +18,7 @@ string And::display(){
 }
 
 bool And::run(){
-	if(lhs->run()){
-		rhs->run();
+	if(lhs->run() && rhs->run()){
 		return true;
 	}
 	return false;

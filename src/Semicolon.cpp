@@ -18,7 +18,7 @@ string Semicolon::display(){
 
 bool Semicolon::run(){
 	lhs->run();
-	//rhs->run();
+	rhs->run();
 	return true;
 
   
