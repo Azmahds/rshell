@@ -15,16 +15,26 @@ Token::Token(char*  arr) : CMD(){
 	}   
 
 	for(int i = 0; i < SIZE; ++i){
+		if(arr[i] == '"'){
+			arr[i] =  '+';
+			for(unsigned j =  i +  1; j <  SIZE; ++j){
+				if(arr[j] == '"'){
+					arr[j] = '+';
+					i = j + 1;
+				}
+			}
+		}
+
 		if(arr[i] == ' '){
-			arr[i] = '\0';
+			arr[i] = '+';
 		}
 	}
  	
-	arr = strtok(arr, "\0");
+	arr = strtok(arr, "+");
 	int i = 0;
-	while(arr != NULL){
+	while(arr != '\0'){
 		toks[i] = arr;
-		arr = strtok(NULL, "\0");
+		arr = strtok(NULL, "+");
 		++i;
 	}
 	

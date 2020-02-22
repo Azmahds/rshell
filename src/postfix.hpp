@@ -35,7 +35,7 @@ CMD* buildTree(char** arr){
   char *sSym = (char*) ";";
   char *eSym = (char*) "exit";
 
-  for(unsigned i = 0; i < SIZE; ++i){
+  for(unsigned i = 0; i < SIZE-1; ++i){
     char *temp = arr[i];
     if (strcmp(temp, eSym) == 0){
       CMD *t = new Exit();
@@ -79,6 +79,9 @@ CMD* buildTree(char** arr){
 }
 
 bool runTree(CMD* root){
+	root->run();
+}
+/*
   CMD* t = root;
   CMD* tL = root->GetL();
   CMD* tR = root->GetR();
@@ -119,7 +122,7 @@ bool runTree(CMD* root){
     }
   }
   return t->run();
-}
+*/
 
 
 

@@ -14,7 +14,8 @@
 #include "And.h"
 #include "Or.h"
 #include "Semicolon.h"
-
+#include "Exit.h"
+#include "postfix.hpp"
 
 using namespace std;
 
@@ -33,26 +34,25 @@ int main(){
  	 cout << "$ ";
  	 getline(cin,input);
 	 string s;
-	 //char space = ' ';
+	
 	 for(int i = 0; i < input.size(); ++i){
 		s.push_back(input.at(i));
 		if( i+1 < input.size() && input.at(i+1) == ';'){
 			s.push_back(' ');
 		}
          } 
-//	 if(s.at(s.size()-1) == ';'){
-//		s.push_back(space);
-//	 }
  	 if(input == "exit" || input == " exit" || input == "exit " || input == " exit "){
  	     break;
  	 }
   	 char **arr;
 	
- 	cout << "OUTPUTTING WHAT IS IN INPUT AFTER EXC: 	" <<s << endl;  
-
 	 arr = parse(s);
-
-
+	
+ 	 arr = infix_to_postfix(arr);
+	
+	 CMD* tree = buildTree(arr);
+	 
+	 tree->run();
 
 
 
@@ -82,29 +82,11 @@ char** parse(string input){
    char *token = new char [input.size() + 1];
    for(int i = 0; i < input.size(); ++i){
         token[i] = input.at(i);
-	cout << SIZE << ":   " << token[SIZE] << endl;
-	SIZE++;
+ 	SIZE++;
    }
    token[input.size()] = '\0';
 
    vector<char*> t;
-
- //   int SIZE = 0;
- //   while(token[SIZE] != '\0'){
-        cout << SIZE << ":   " << token[SIZE] << endl;
-//	++SIZE;
-//    }
-   	
-	cout << "INPUT SIZE IS EQUAL TO :      " << input.size() << endl;
-
-	cout << "CONTENTS OF INPUT:	" << input << endl;	
-
-	cout << "SIZE VALUE IS EQUAL TO :      " << SIZE << endl;
-
-
-	if(input.size() == SIZE){
-		cout << "\n THE SIZES ARE EQUAL " << input.size() << "    ==       " << SIZE << endl;
-	}
 
     for(int i = 0; i < SIZE; ++i){
       if(token[i] == '"'){
