@@ -19,7 +19,7 @@ ADD_EXECUTABLE(rshell
     #src/postfix.hpp
 )
 
-ADD_EXECUTABLE(hello
+ADD_EXECUTABLE(main
     src/main.cpp
     src/Token.cpp
     src/Or.cpp
@@ -28,6 +28,7 @@ ADD_EXECUTABLE(hello
     src/Exit.h
     src/CMD.h
     src/Connector.h
+    src/postfix.hpp
 )
 
 
