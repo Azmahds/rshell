@@ -17,10 +17,10 @@ string Or::display(){
 }
 
 bool Or::run(){
-	if(lhs->run()){
+	if(lhs->run() == true){
 		return true;
 	}
-	else if (rhs->run()){
+	else if (rhs->run() == true){
 		return true;
 	}
 	return false;
