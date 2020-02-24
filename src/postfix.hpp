@@ -81,49 +81,6 @@ CMD* buildTree(char** arr){
 bool runTree(CMD* root){
 	root->run();
 }
-/*
-  CMD* t = root;
-  CMD* tL = root->GetL();
-  CMD* tR = root->GetR();
-  bool ran = true;
-
-  if(tL != NULL && tL->isCon() == true){
-    ran = runTree(tL);
-  }
-
-  if(t->isAnd()){
-    if(tL->isCon()){
-      if(ran){return tR->run();}
-    }
-    else{
-      bool tf = tL->run();
-      if(tf){return tR->run();}
-      return false;
-    }
-  }
-  else if(t->isOr()){
-    if(tL->isCon()){
-      if(ran){return true;}
-      else{return tR->run();}
-    }
-    else{
-      bool tf = tL->run();
-      if(tf){return true;}
-      return tR->run();
-    }
-  }
-  else if(t->isSemicolon()){
-    if(tL->isCon()){
-      return tR->run();
-    }
-    else{
-      tL->run();
-      return tR->run();
-    }
-  }
-  return t->run();
-*/
-
 
 
 char** infix_to_postfix(char** input){
@@ -141,23 +98,31 @@ char **arr = new char* [SIZE];
 char *aSym = (char*) "&&";
 char *oSym = (char*) "||";
 char *sSym = (char*) ";";
-
+char *opSym = (char*) "(";
+char *cpSym = (char*) ")";
 
 
 for(int i = 0; i < SIZE-1; ++i){
 
      if(strcmp(input[i], aSym) == 0){
-        char *sum = new char[64];
-	strcpy(sum,  input[i1]);
-        if(i1+1 != i){strcat(sum, " ");}
-        ++i1;
+        char *sum  = new  char[64];
+        int sz = 0;
+     //   strcpy(sum, input[i1]);
+     //   ++sz;
+      //  if(i1 +1 != i) {strcat(sum, " "); ++sz;}
+      //  ++i1;
+
+	strcpy(sum, "");
         for(int l = i1; l < i; ++l){
         strcat(sum, input[l]);
-        if(l+1 !=  i){strcat(sum, " ");}
+        ++sz;
+        if(l+1 !=  i){strcat(sum, " "); ++sz;}
         }
             i1 = i + 1;
+        if(sz != 0){
         arr[index] = sum;
         ++index;
+        }
         char* add = new char[3];
 
         add[0] = '&';
@@ -167,17 +132,24 @@ for(int i = 0; i < SIZE-1; ++i){
         ++index;
     }
     else if(strcmp(input[i], oSym) == 0){
-    char *sum  = new  char[64];
-	strcpy(sum,  input[i1]);
-        if(i1+1 != i){strcat(sum, " ");}
-        ++i1;
+        char *sum  = new  char[64];
+        int sz = 0;
+     //   strcpy(sum, input[i1]);
+     //   ++sz;
+     //   if(i1 +1 != i) {strcat(sum, " "); ++sz;}
+      //  ++i1;
+
+	strcpy(sum, "");
         for(int l = i1; l < i; ++l){
             strcat(sum, input[l]);
-            if(l+1 !=  i){strcat(sum, " ");}
+            ++sz;
+            if(l+1 !=  i){strcat(sum, " ");++sz; }
         }
         i1 = i + 1;
+        if(sz != 0){
         arr[index] = sum;
         ++index;
+        }
         char* add = new char[3];
 
         add[0] = '|';
@@ -187,17 +159,24 @@ for(int i = 0; i < SIZE-1; ++i){
         ++index;
     }
     else if(strcmp(input[i], sSym) == 0){
-    char *sum  = new  char[64];
-	strcpy(sum,  input[i1]);
-	if(i1+1 != i){strcat(sum, " ");}
-	++i1;
+        char *sum  = new  char[64];
+        int sz = 0;
+      //  strcpy(sum, input[i1]);
+      //  ++sz;
+     //   if(i1 +1 != i) {strcat(sum, " "); ++sz;}
+     //   ++i1;
+
+	strcpy(sum, "");
         for(int l = i1; l < i; ++l){
             strcat(sum, input[l]);
-            if(l+1 !=  i){strcat(sum, " ");}
+            ++sz;
+            if(l+1 !=  i){strcat(sum, " "); sz++;}
         }
         i1 = i + 1;
+        if(sz != 0){
         arr[index] = sum;
         ++index;
+        }
         char* add = new char[2];
 
         add[0] = ';';
@@ -205,18 +184,71 @@ for(int i = 0; i < SIZE-1; ++i){
         arr[index] = add;
         ++index;
     }
+    else if(strcmp(input[i], cpSym) == 0){
+        char *sum  = new  char[64];
+        int sz = 0;
+    //    strcpy(sum, input[i1]);
+     //   ++sz;
+     //   if(i1 +1 != i) {strcat(sum, " "); ++sz;}
+     //   ++i1;
+	strcpy(sum, "");
+        for(int l = i1; l < i; ++l){
+            strcat(sum, input[l]);
+                sz++;
+            if(l+1 !=  i){strcat(sum, " "); sz++;}
+        }
+        i1 = i + 1;
+        if(sz != 0){
+        arr[index] = sum;
+        ++index;
+        }
+        char* add = new char[2];
+
+        add[0] = ')';
+        add[1] = '\0';
+        arr[index] = add;
+        ++index;
+    }
+    else if(strcmp(input[i], opSym) == 0){
+    char *sum  = new  char[64];
+        int sz = 0;
+  //      strcpy(sum, input[i1]);
+ //       ++sz;
+  //      if(i1 +1 != i) {strcat(sum, " "); ++sz;}
+  //      ++i1;
+	strcpy(sum, "");
+       for(int l = i1; l < i; ++l){
+            strcat(sum, input[l]);
+                ++sz;
+            if(l+1 !=  i){strcat(sum, " "); ++sz;}
+         }
+        i1 = i + 1;
+
+        if(sz != 0){
+
+        arr[index] = sum;
+        ++index;
+        }
+        char* add = new char[2];
+
+        add[0] = '(';
+        add[1] = '\0';
+        arr[index] = add;
+        ++index;
+    }
 }
 
 if(i1 < SIZE-1){
-char *sum = new char[64];
-strcpy(sum,  input[i1]);
-        if(i1+1 != SIZE-1){strcat(sum, " ");}
-        ++i1;
+    char *sum  = new  char[64];
+   //     strcpy(sum, input[i1]);
+  //      if(i1 +1 != SIZE -1 ) {strcat(sum, " ");}
+ //       ++i1;
+	strcpy(sum, "");
     while (i1 < SIZE-1){
         strcat(sum, input[i1]);
         if(i1+1 != SIZE-1){strcat(sum, " ");}
         ++i1;
-	}
+        }
 
 arr[index] = sum;
 ++index;
@@ -225,18 +257,77 @@ arr[index] = sum;
 arr[index] = NULL;
 SIZE = index;
 
-for(int i =0; i < SIZE; ++i){
-    if(((strcmp(arr[i], aSym) == 0) || (strcmp(arr[i], oSym) == 0) || (strcmp(arr[i], sSym) == 0)) && (i+1 < SIZE)){
-        swap(arr[i], arr[i+1]);
-        if(i+2 < SIZE){
-            i = i + 1 ;
+/*
+int u = 0;
+while(arr[u] != NULL){
+	cout << arr[u] << endl;
+	++u;
+}
+*/
+
+
+char** arr2 = new char* [SIZE + 5];
+char* spSym = (char*) " ";
+int j = 0;
+for(int i = 0; i < SIZE; ++i){
+        if(strcmp(arr[i], spSym) != 0){
+                arr2[j] = arr[i];
+                ++j;
         }
-    }
+}
+arr2[j] = NULL;
+SIZE = j;
+
+delete [] arr;
+
+
+stack<char*> c;
+char** arr3 = new char* [SIZE];
+
+
+int s = 0;
+int i = 0;
+while(arr2[i] != NULL){
+        if((strcmp(arr2[i], aSym) == 0) || (strcmp(arr2[i], oSym) == 0) || (strcmp(arr2[i], sSym) == 0) || (strcmp(arr2[i], opSym) == 0) ){
+                c.push(arr2[i]);
+        }
+        else if(strcmp(arr2[i], cpSym) == 0){
+                while(strcmp(c.top(), opSym) != 0  && (!c.empty())){
+                        arr3[s] = c.top();
+                        c.pop();
+                        ++s;
+
+                }
+                while(strcmp(c.top(), opSym) == 0){
+                        c.pop();
+                }
+		if(!c.empty()){
+		  arr3[s] = c.top();
+		  c.pop();
+		  s++;
+		}
+		
+
+        }
+        else{
+                arr3[s] = arr2[i];
+                ++s;
+        }
+++i;
 }
 
-return arr;
+while(!c.empty()){
+        arr3[s] = c.top();
+        c.pop();
+        ++s;
+}
+arr3[s] = NULL;
+
+
+return arr3;
 
 }
+
 
 #endif
 

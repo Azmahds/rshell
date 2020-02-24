@@ -34,41 +34,53 @@ int main(){
  	 cout << "$ ";
  	 getline(cin,input);
 	 string s;
-	
+	 string p;	
 	 for(int i = 0; i < input.size(); ++i){
 		s.push_back(input.at(i));
 		if( i+1 < input.size() && input.at(i+1) == ';'){
 			s.push_back(' ');
 		}
          } 
+
+	 for(int i = 0; i < s.size(); ++i){
+		p.push_back(s.at(i));
+		if(i == 0 && s.at(i) == '('){
+			p.push_back(' ');
+		} 
+		if( i+1 < s.size() && s.at(i) == '('){
+			p.push_back(' ');
+		}
+		else if(i+1< s.size() && s.at(i+1) == ')'){
+			p.push_back(' ');
+		}
+         } 
+
+//cout << p << endl;
+
  	 if(input == "exit" || input == " exit" || input == "exit " || input == " exit "){
       	     exit(0);
  	 }
   	 char **arr;
 	
-	 arr = parse(s);
+	 arr = parse(p);
+
 	
  	 arr = infix_to_postfix(arr);
 	
-	 CMD* tree = buildTree(arr);
-	 
-	 //tree->display();
+	int z = 0;
+	while(arr[z] != NULL){
+		cout << arr[z] << endl;
+		++z;
+	}
 
-	tree->run();
-	//cout<< endl << endl;
+
+ 	CMD* tree = buildTree(arr);
+//	tree->display();
+	//tree->run();
+
 	
-
-
-
-
-//	delete [] token; 
 	delete [] arr;	
-//	int i = 0;
-//	while(arr[i] != '\0' ){
-//		cout << arr[i] << endl;
-//		i++;
-//	}
- //	if(prototype(arr)){}
+
   }
 
 
