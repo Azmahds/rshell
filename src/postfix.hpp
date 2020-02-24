@@ -282,7 +282,8 @@ delete [] arr;
 
 
 stack<char*> c;
-char** arr3 = new char* [SIZE+5];
+
+char** arr3 = new char* [SIZE + 5];
 
 
 int s = 0;
@@ -298,10 +299,10 @@ while(arr2[i] != NULL){
                         ++s;
 
                 }
-                if(strcmp(c.top(), opSym) == 0){
+                if(strcmp(c.top(), opSym) == 0 ){
                         c.pop();
                 }
-		if(!c.empty()){
+		if(!c.empty() && strcmp(c.top(), opSym) == 0 ){
 		  arr3[s] = c.top();
 		  c.pop();
 		  s++;
