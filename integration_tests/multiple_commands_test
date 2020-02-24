@@ -1,9 +1,13 @@
-echo not working fully with connectors yet so exiting now
-exit
+echo SHOULD BE hi THEN rhs
 echo hi || echo hello
-ls -j && echo not working if this message executed
-ls -a && echo this command works if this message has executed
-ls && echo goodbye
-echo later
-exit && echo it should have stopped working by now
-
+ecakjdbgaj || echo rhs
+echo "SHOULD FAIL THEN LS -A AND ECHO WORKS"
+ls -j && echo not working if executed
+ls -a && echo works if this executed
+echo "SEMICOLON SHOULD FAIL ONCE BEFORE rhs AND AFTER lhs"
+echo 1; echo 2
+akjnecjf; echo rhs
+echo lhs; oaefoauefo
+echo "STARTING COMPLEX TESTS"
+echo 1; echo 2 && ec || echo 3; echo 4  && echo  5; ec || echo 6 &&  echo 7 || echo sike; echo 8 && ec || echo 9 && echo 10
+exit
