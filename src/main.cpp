@@ -66,17 +66,17 @@ int main(){
 
 	
  	 arr = infix_to_postfix(arr);
-	
+/*	
 	int z = 0;
 	while(arr[z] != NULL){
 		cout << arr[z] << endl;
 		++z;
 	}
-
+*/
 
  	CMD* tree = buildTree(arr);
 //	tree->display();
-	//tree->run();
+	tree->run();
 
 	
 	delete [] arr;	
