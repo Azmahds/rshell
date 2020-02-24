@@ -9,7 +9,7 @@ using namespace std;
 
 class Exit : public Token{
         public:
-                bool run() { return false; }
+                bool run() { exit(0); }
                 Exit(){ex[0] = NULL;};
 		~Exit(){};
 		Exit& operator=(const Exit& e){return *this;};
