@@ -15,8 +15,8 @@
 #include "Or.h"
 #include "Semicolon.h"
 #include "Exit.h"
-#include "postfix.hpp"
-
+//#include "postfix.hpp"
+#include "example.hpp"
 using namespace std;
 
 char** parse(string);
@@ -34,25 +34,52 @@ int main(){
  	 cout << "$ ";
  	 getline(cin,input);
 	 string s;
-	
+	 string p;	
 	 for(int i = 0; i < input.size(); ++i){
 		s.push_back(input.at(i));
 		if( i+1 < input.size() && input.at(i+1) == ';'){
 			s.push_back(' ');
 		}
          } 
+
+	 for(int i = 0; i < s.size(); ++i){
+		p.push_back(s.at(i));
+		if(i == 0 && s.at(i) == '('){
+			p.push_back(' ');
+		} 
+		if( i+1 < s.size() && s.at(i) == '('){
+			p.push_back(' ');
+		}
+		else if(i+1< s.size() && s.at(i+1) == ')'){
+			p.push_back(' ');
+		}
+         } 
+
+
+
  	 if(input == "exit" || input == " exit" || input == "exit " || input == " exit "){
  	     break;
  	 }
   	 char **arr;
 	
-	 arr = parse(s);
+	 arr = parse(p);
+
 	
  	 arr = infix_to_postfix(arr);
+
+	 int j = 0;
+	 while(arr[j] != NULL){
+		cout << arr[j] << endl;
+		++j;
+	 }
+
+
+
+
 	
-	 CMD* tree = buildTree(arr);
+//	 CMD* tree = buildTree(arr);
 	 
-	 tree->run();
+//	 tree->run();
 
 
 
