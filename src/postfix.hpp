@@ -94,7 +94,7 @@ while(input[SIZE] != NULL){
 
 int index = 0;
 int i1 = 0;
-char **arr = new char* [SIZE];
+char **arr = new char* [SIZE+1];
 char *aSym = (char*) "&&";
 char *oSym = (char*) "||";
 char *sSym = (char*) ";";
@@ -282,7 +282,7 @@ delete [] arr;
 
 
 stack<char*> c;
-char** arr3 = new char* [SIZE];
+char** arr3 = new char* [SIZE+5];
 
 
 int s = 0;
@@ -298,7 +298,7 @@ while(arr2[i] != NULL){
                         ++s;
 
                 }
-                while(strcmp(c.top(), opSym) == 0){
+                if(strcmp(c.top(), opSym) == 0){
                         c.pop();
                 }
 		if(!c.empty()){
@@ -323,6 +323,7 @@ while(!c.empty()){
 }
 arr3[s] = NULL;
 
+delete [] arr2;
 
 return arr3;
 

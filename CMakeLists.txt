@@ -8,7 +8,7 @@ ADD_EXECUTABLE(test
     unit_tests/unit_test.cpp
 )
 
-ADD_EXECUTABLE(rshell
+ADD_EXECUTABLE(main
     src/test.cpp
     src/Token.cpp
     src/Or.cpp
@@ -19,7 +19,7 @@ ADD_EXECUTABLE(rshell
     #src/postfix.hpp
 )
 
-ADD_EXECUTABLE(main
+ADD_EXECUTABLE(rshell
     src/main.cpp
     src/Token.cpp
     src/Or.cpp
