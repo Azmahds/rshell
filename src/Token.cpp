@@ -47,36 +47,64 @@ Token::~Token(){}
 
 Token& Token::operator=(const Token& t){return *this;}
 
-string Token::display(){
-	string t = "TOKEN";
-	return t;
+void Token::display(){
+	int i = 0;
+	while( toks[i] != NULL){
+		cout  << toks[i] << ' ';
+		++i;
+	}
+	cout << endl;
 }
 
 bool Token::run(){
   	pid_t pid;
-        pid_t wpid;
-        int status;
+        int status = 1;
 
        pid = fork();
+
+
+	
+
         if (pid < 0){
                 perror("FORK FAILURE");
-                exit(false);
+                exit(1);
         }
-	
+
+	else if (pid == 0){
+		if(execvp(toks[0], toks) < 0){
+			perror("EXECVP FAILURE");
+			exit(1);
+		}
+		status = 1;
+		exit(1);
+	}
+	else{
+		if(waitpid(pid, &status, WCONTINUED) < 0){
+			perror("WAITPID FAILURE");
+			exit(1);
+		}
+		if(status == 0){
+			return true;
+		}
+		return  false;
+	}
+	return false;
+/*	
         switch(pid){
                 case 0: 
                         if(execvp(toks[0], toks) != 0){
                         	perror("EXECVP FAILURE");
+			//	return false;
                         	exit(false);
                         }
-                        exit(true);
 		default:
                         if(waitpid(pid, &status, WUNTRACED) < 0){
                         	perror("CHILD IN PROCESS");        
                         }
 			if(WIFEXITED(status)){
 				return true;
-			}
+			}else{return false;}
         }
-	return true;
+	return false;
+*/
 }

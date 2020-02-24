@@ -21,7 +21,7 @@
 #include <unistd.h>
 using namespace std;
 
-
+/*
 TEST(AndTest, AndDisplay){
     And* f = new And();
     EXPECT_EQ(f->display(), "AND");
@@ -42,7 +42,7 @@ TEST(TokenTest, TokenDisplay){
     Token* f = new Token();
     EXPECT_EQ(f->display(), "TOKEN");
 }
-
+*/
 
 TEST(TokenTest, TokenRun){
     char* arr = new char[32];

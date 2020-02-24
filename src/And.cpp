@@ -13,8 +13,10 @@ And::And() {
 	cons[1] = '\0';
 }
 
-string And::display(){
-	return "AND";
+void And::display(){
+	lhs->display();
+	cout << "AND" <<  endl;
+	rhs->display();
 }
 
 bool And::run(){

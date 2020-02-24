@@ -1,3 +1,3 @@
 #!/bin/sh
 
-.././rshell < multiple_commands_test 
+.././main < multiple_commands_test 

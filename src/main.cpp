@@ -15,8 +15,8 @@
 #include "Or.h"
 #include "Semicolon.h"
 #include "Exit.h"
-//#include "postfix.hpp"
-#include "example.hpp"
+#include "postfix.hpp"
+
 using namespace std;
 
 char** parse(string);
@@ -55,10 +55,10 @@ int main(){
 		}
          } 
 
-
+//cout << p << endl;
 
  	 if(input == "exit" || input == " exit" || input == "exit " || input == " exit "){
- 	     break;
+      	     exit(0);
  	 }
   	 char **arr;
 	
@@ -66,32 +66,21 @@ int main(){
 
 	
  	 arr = infix_to_postfix(arr);
+	
+	int z = 0;
+	while(arr[z] != NULL){
+		cout << arr[z] << endl;
+		++z;
+	}
 
-	 int j = 0;
-	 while(arr[j] != NULL){
-		cout << arr[j] << endl;
-		++j;
-	 }
 
-
-
+ 	CMD* tree = buildTree(arr);
+//	tree->display();
+	//tree->run();
 
 	
-//	 CMD* tree = buildTree(arr);
-	 
-//	 tree->run();
-
-
-
-
-//	delete [] token; 
 	delete [] arr;	
-//	int i = 0;
-//	while(arr[i] != '\0' ){
-//		cout << arr[i] << endl;
-//		i++;
-//	}
- //	if(prototype(arr)){}
+
   }
 
 

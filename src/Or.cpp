@@ -12,15 +12,17 @@ Or::Or() {
 	cons[1] = '\0';
 }
 
-string Or::display(){
-	return "OR";
+void Or::display(){
+	lhs->display();
+	cout << "OR" << endl;
+	rhs->display();
 }
 
 bool Or::run(){
-	if(lhs->run()){
+	if(lhs->run() == true){
 		return true;
 	}
-	else if (rhs->run()){
+	else if (rhs->run() == true){
 		return true;
 	}
 	return false;

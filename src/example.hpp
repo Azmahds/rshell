@@ -147,8 +147,14 @@ char *cpSym = (char*) ")";
 for(int i = 0; i < SIZE-1; ++i){
 
      if(strcmp(input[i], aSym) == 0){
-        char *sum = new char[512];
+        char *sum  = new  char[64];
 	int sz = 0;
+	strcpy(sum, input[i1]);
+	++sz;
+	if(i1 +1 != i) {strcat(sum, " "); ++sz;}
+ 	++i1;
+ 
+
         for(int l = i1; l < i; ++l){
         strcat(sum, input[l]);
 	++sz;
@@ -168,8 +174,14 @@ for(int i = 0; i < SIZE-1; ++i){
         ++index;
     }
     else if(strcmp(input[i], oSym) == 0){
-    char *sum  = new  char[512];
+        char *sum  = new  char[64];
 	int sz = 0;
+	strcpy(sum, input[i1]);
+	++sz;
+	if(i1 +1 != i) {strcat(sum, " "); ++sz;}
+ 	++i1;
+ 
+
         for(int l = i1; l < i; ++l){
             strcat(sum, input[l]);
 	    ++sz;
@@ -189,8 +201,14 @@ for(int i = 0; i < SIZE-1; ++i){
         ++index;
     }
     else if(strcmp(input[i], sSym) == 0){
-    char *sum  = new  char[512];
-	int sz = 0;     
+        char *sum  = new  char[64];
+	int sz = 0;
+	strcpy(sum, input[i1]);
+	++sz;
+	if(i1 +1 != i) {strcat(sum, " "); ++sz;}
+ 	++i1;
+  
+
         for(int l = i1; l < i; ++l){
             strcat(sum, input[l]);
 	    ++sz;
@@ -209,8 +227,13 @@ for(int i = 0; i < SIZE-1; ++i){
         ++index;
     }
     else if(strcmp(input[i], cpSym) == 0){
-    char *sum  = new  char[512];
+        char *sum  = new  char[64];
 	int sz = 0;
+	strcpy(sum, input[i1]);
+	++sz;
+	if(i1 +1 != i) {strcat(sum, " "); ++sz;}
+ 	++i1;
+    
         for(int l = i1; l < i; ++l){
             strcat(sum, input[l]);
 		sz++;
@@ -229,9 +252,14 @@ for(int i = 0; i < SIZE-1; ++i){
         ++index;
     }
     else if(strcmp(input[i], opSym) == 0){
-    char *sum  = new  char[512];
+    char *sum  = new  char[64];
 	int sz = 0;
-        for(int l = i1; l < i; ++l){
+	strcpy(sum, input[i1]);
+	++sz;
+	if(i1 +1 != i) {strcat(sum, " "); ++sz;}
+ 	++i1;
+  
+       for(int l = i1; l < i; ++l){
             strcat(sum, input[l]);
 		++sz;
             if(l+1 !=  i){strcat(sum, " "); ++sz;}
@@ -253,7 +281,11 @@ for(int i = 0; i < SIZE-1; ++i){
 }
 
 if(i1 < SIZE-1){
-char *sum = new char[512];
+    char *sum  = new  char[64];
+	strcpy(sum, input[i1]);
+	if(i1 +1 != SIZE -1 ) {strcat(sum, " ")}
+ 	++i1;
+ 
     while (i1 < SIZE-1){
         strcat(sum, input[i1]);
         if(i1+1 != SIZE-1){strcat(sum, " ");}
@@ -266,16 +298,6 @@ arr[index] = sum;
 
 arr[index] = NULL;
 SIZE = index;
-
-
-/*
-cout << "arr1" << endl;
-int z = 0;
-while(arr[z] != NULL ){
-	cout << arr[z] << endl;
-	++z;
-}
-*/
 
 
 char** arr2 = new char* [SIZE + 5];
@@ -330,17 +352,6 @@ while(!c.empty()){
 arr3[s] = NULL;
 
 
-
-/*
-for(int i =0; i < SIZE; ++i){
-    if(((strcmp(arr[i], aSym) == 0) || (strcmp(arr[i], oSym) == 0) || (strcmp(arr[i], sSym) == 0)) && (i+1 < SIZE)){
-        swap(arr[i], arr[i+1]);
-        if(i+2 < SIZE){
-            i = i + 1 ;
-        }
-    }
-}
-*/
 return arr3;
 
 }
