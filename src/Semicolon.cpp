@@ -12,8 +12,10 @@ Semicolon::Semicolon(){
 	cons[1] = '\0';
 }
 
-string Semicolon::display(){
-        return "SEMICOLON";
+void Semicolon::display(){
+	lhs->display();
+        cout  <<  "SEMICOLON" << endl;
+	rhs->display();
 }
 
 bool Semicolon::run(){

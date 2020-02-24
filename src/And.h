@@ -14,7 +14,7 @@ And(char* arr){
      cons[1] = NULL;
 };
 
-string display();
+void display();
 
 virtual void SetL(CMD* L);
 virtual void SetR(CMD* R);

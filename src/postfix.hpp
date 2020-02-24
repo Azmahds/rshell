@@ -40,8 +40,8 @@ CMD* buildTree(char** arr){
     if (strcmp(temp, eSym) == 0){
       CMD *t = new Exit();
       s.push(t);
-    }
-    else if(strcmp(temp, aSym) == 0){
+    } 
+     else if(strcmp(temp, aSym) == 0){
       CMD *t = new And();
       t->SetR(s.top());
       s.pop();
@@ -147,7 +147,10 @@ char *sSym = (char*) ";";
 for(int i = 0; i < SIZE-1; ++i){
 
      if(strcmp(input[i], aSym) == 0){
-        char *sum = new char[512];
+        char *sum = new char[64];
+	strcpy(sum,  input[i1]);
+        if(i1+1 != i){strcat(sum, " ");}
+        ++i1;
         for(int l = i1; l < i; ++l){
         strcat(sum, input[l]);
         if(l+1 !=  i){strcat(sum, " ");}
@@ -164,7 +167,10 @@ for(int i = 0; i < SIZE-1; ++i){
         ++index;
     }
     else if(strcmp(input[i], oSym) == 0){
-    char *sum  = new  char[512];
+    char *sum  = new  char[64];
+	strcpy(sum,  input[i1]);
+        if(i1+1 != i){strcat(sum, " ");}
+        ++i1;
         for(int l = i1; l < i; ++l){
             strcat(sum, input[l]);
             if(l+1 !=  i){strcat(sum, " ");}
@@ -181,7 +187,10 @@ for(int i = 0; i < SIZE-1; ++i){
         ++index;
     }
     else if(strcmp(input[i], sSym) == 0){
-    char *sum  = new  char[512];
+    char *sum  = new  char[64];
+	strcpy(sum,  input[i1]);
+	if(i1+1 != i){strcat(sum, " ");}
+	++i1;
         for(int l = i1; l < i; ++l){
             strcat(sum, input[l]);
             if(l+1 !=  i){strcat(sum, " ");}
@@ -199,7 +208,10 @@ for(int i = 0; i < SIZE-1; ++i){
 }
 
 if(i1 < SIZE-1){
-char *sum = new char[512];
+char *sum = new char[64];
+strcpy(sum,  input[i1]);
+        if(i1+1 != SIZE-1){strcat(sum, " ");}
+        ++i1;
     while (i1 < SIZE-1){
         strcat(sum, input[i1]);
         if(i1+1 != SIZE-1){strcat(sum, " ");}

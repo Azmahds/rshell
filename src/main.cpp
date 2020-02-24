@@ -42,7 +42,7 @@ int main(){
 		}
          } 
  	 if(input == "exit" || input == " exit" || input == "exit " || input == " exit "){
- 	     break;
+      	     exit(0);
  	 }
   	 char **arr;
 	
@@ -52,7 +52,11 @@ int main(){
 	
 	 CMD* tree = buildTree(arr);
 	 
-	 tree->run();
+	 //tree->display();
+
+	tree->run();
+	//cout<< endl << endl;
+	
 
 
 

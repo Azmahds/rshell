@@ -26,6 +26,6 @@ virtual bool isAnd(){return false;};
 virtual bool isOr(){return  true;};
 virtual bool isSemicolon(){return false;};
 
-string display();
+void display();
 };
 #endif

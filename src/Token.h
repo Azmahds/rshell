@@ -14,7 +14,7 @@ class Token : public CMD{
 		~Token(); // implemented
 		Token& operator=(const Token& t);
 		bool run();
-		string display();
+		void display();
 		virtual bool isCon(){return false;};
 		virtual bool isEx(){return false;};
 		virtual void SetL(CMD* L){};

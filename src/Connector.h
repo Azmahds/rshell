@@ -18,8 +18,8 @@ Connector(char* arr){
 Connector& operator=(const Connector& c){return *this;};
 virtual void SetL(CMD* L){};
 virtual void SetR(CMD* R){};
-string display(){
-	return "CONNECTOR";
+void display(){
+	cout << "CONNECTOR" << endl;
 }
 virtual bool isCon(){return true;};
 virtual bool isEx(){return false;};

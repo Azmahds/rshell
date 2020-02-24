@@ -13,7 +13,7 @@ class Exit : public Token{
                 Exit(){ex[0] = NULL;};
 		~Exit(){};
 		Exit& operator=(const Exit& e){return *this;};
-		string display(){ return "TODO"; };
+		void display(){ cout  << "TODO" <<  endl; };
 		virtual bool isCon(){return false;};
 		virtual bool isEx(){return true;};
 		virtual void SetL(CMD* L){};

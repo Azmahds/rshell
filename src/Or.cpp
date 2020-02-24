@@ -12,8 +12,10 @@ Or::Or() {
 	cons[1] = '\0';
 }
 
-string Or::display(){
-	return "OR";
+void Or::display(){
+	lhs->display();
+	cout << "OR" << endl;
+	rhs->display();
 }
 
 bool Or::run(){
