@@ -16,6 +16,7 @@
 #include "Semicolon.h"
 #include "Exit.h"
 #include "postfix.hpp"
+#include "Test.h"
 
 using namespace std;
 

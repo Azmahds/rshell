@@ -29,6 +29,7 @@ ADD_EXECUTABLE(rshell
     src/CMD.h
     src/Connector.h
     src/postfix.hpp
+    src/Test.cpp
 )
 
 
