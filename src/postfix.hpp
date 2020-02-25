@@ -83,11 +83,53 @@ bool runTree(CMD* root){
 }
 
 
-char** infix_to_postfix(char** input){
-int SIZE = 0;
 
 
-while(input[SIZE] != NULL){
+
+char** parse(string input){
+   int SIZE = 0;
+   char *token = new char [input.size() + 1];
+   for(int i = 0; i < input.size(); ++i){
+        token[i] = input.at(i);
+ 	SIZE++;
+   }
+   token[input.size()] = '\0';
+
+   vector<char*> t;
+
+    for(int i = 0; i < SIZE; ++i){
+      if(token[i] == '"'){
+                token[i] = '+';
+                for (int j = i+1; j <  SIZE; ++j){
+                        if(token[j] == '"'){ i = j+1; token[j] = '+'; break;}
+                        ++i;
+                }
+        }
+      if (token[i] == ' '){
+        token[i] = '+';
+      }
+    }
+
+    token = strtok(token, "+");
+
+    while(token != NULL){
+      t.push_back(token);
+      token = strtok(NULL, "+");
+    }
+   
+   delete [] token;
+    char **array = new char*[t.size() + 1];
+    for(unsigned i = 0; i < t.size(); ++i){
+         array[i] = t.at(i);
+    }
+    array[t.size()] = NULL;
+
+
+
+
+SIZE = 0;
+
+while(array[SIZE] != NULL){
 ++SIZE;
 }
 ++SIZE;
@@ -104,17 +146,12 @@ char *cpSym = (char*) ")";
 
 for(int i = 0; i < SIZE-1; ++i){
 
-     if(strcmp(input[i], aSym) == 0){
+     if(strcmp(array[i], aSym) == 0){
         char *sum  = new  char[64];
         int sz = 0;
-     //   strcpy(sum, input[i1]);
-     //   ++sz;
-      //  if(i1 +1 != i) {strcat(sum, " "); ++sz;}
-      //  ++i1;
-
 	strcpy(sum, "");
         for(int l = i1; l < i; ++l){
-        strcat(sum, input[l]);
+        strcat(sum, array[l]);
         ++sz;
         if(l+1 !=  i){strcat(sum, " "); ++sz;}
         }
@@ -131,17 +168,12 @@ for(int i = 0; i < SIZE-1; ++i){
         arr[index] = add;
         ++index;
     }
-    else if(strcmp(input[i], oSym) == 0){
+    else if(strcmp(array[i], oSym) == 0){
         char *sum  = new  char[64];
         int sz = 0;
-     //   strcpy(sum, input[i1]);
-     //   ++sz;
-     //   if(i1 +1 != i) {strcat(sum, " "); ++sz;}
-      //  ++i1;
-
 	strcpy(sum, "");
         for(int l = i1; l < i; ++l){
-            strcat(sum, input[l]);
+            strcat(sum, array[l]);
             ++sz;
             if(l+1 !=  i){strcat(sum, " ");++sz; }
         }
@@ -158,17 +190,12 @@ for(int i = 0; i < SIZE-1; ++i){
         arr[index] = add;
         ++index;
     }
-    else if(strcmp(input[i], sSym) == 0){
+    else if(strcmp(array[i], sSym) == 0){
         char *sum  = new  char[64];
         int sz = 0;
-      //  strcpy(sum, input[i1]);
-      //  ++sz;
-     //   if(i1 +1 != i) {strcat(sum, " "); ++sz;}
-     //   ++i1;
-
-	strcpy(sum, "");
+    	strcpy(sum, "");
         for(int l = i1; l < i; ++l){
-            strcat(sum, input[l]);
+            strcat(sum, array[l]);
             ++sz;
             if(l+1 !=  i){strcat(sum, " "); sz++;}
         }
@@ -184,16 +211,12 @@ for(int i = 0; i < SIZE-1; ++i){
         arr[index] = add;
         ++index;
     }
-    else if(strcmp(input[i], cpSym) == 0){
+    else if(strcmp(array[i], cpSym) == 0){
         char *sum  = new  char[64];
         int sz = 0;
-    //    strcpy(sum, input[i1]);
-     //   ++sz;
-     //   if(i1 +1 != i) {strcat(sum, " "); ++sz;}
-     //   ++i1;
-	strcpy(sum, "");
+        strcpy(sum, "");
         for(int l = i1; l < i; ++l){
-            strcat(sum, input[l]);
+            strcat(sum, array[l]);
                 sz++;
             if(l+1 !=  i){strcat(sum, " "); sz++;}
         }
@@ -209,16 +232,12 @@ for(int i = 0; i < SIZE-1; ++i){
         arr[index] = add;
         ++index;
     }
-    else if(strcmp(input[i], opSym) == 0){
+    else if(strcmp(array[i], opSym) == 0){
     char *sum  = new  char[64];
         int sz = 0;
-  //      strcpy(sum, input[i1]);
- //       ++sz;
-  //      if(i1 +1 != i) {strcat(sum, " "); ++sz;}
-  //      ++i1;
-	strcpy(sum, "");
+  	strcpy(sum, "");
        for(int l = i1; l < i; ++l){
-            strcat(sum, input[l]);
+            strcat(sum, array[l]);
                 ++sz;
             if(l+1 !=  i){strcat(sum, " "); ++sz;}
          }
@@ -240,12 +259,9 @@ for(int i = 0; i < SIZE-1; ++i){
 
 if(i1 < SIZE-1){
     char *sum  = new  char[64];
-   //     strcpy(sum, input[i1]);
-  //      if(i1 +1 != SIZE -1 ) {strcat(sum, " ");}
- //       ++i1;
-	strcpy(sum, "");
+    strcpy(sum, "");
     while (i1 < SIZE-1){
-        strcat(sum, input[i1]);
+        strcat(sum, array[i1]);
         if(i1+1 != SIZE-1){strcat(sum, " ");}
         ++i1;
         }
@@ -256,15 +272,6 @@ arr[index] = sum;
 
 arr[index] = NULL;
 SIZE = index;
-
-/*
-int u = 0;
-while(arr[u] != NULL){
-	cout << arr[u] << endl;
-	++u;
-}
-*/
-
 
 char** arr2 = new char* [SIZE + 5];
 char* spSym = (char*) " ";
@@ -280,12 +287,30 @@ SIZE = j;
 
 delete [] arr;
 
+    return arr2;
+}
+
+
+
+
+
+char** infix_to_postfix(char** arr2){
 
 stack<char*> c;
 
+int SIZE = 0;
+while(arr2[SIZE] != NULL){
+++SIZE;
+}
+++SIZE;
+
 char** arr3 = new char* [SIZE + 5];
 
-
+char *aSym = (char*) "&&";
+char *oSym = (char*) "||";
+char *sSym = (char*) ";";
+char *opSym = (char*) "(";
+char *cpSym = (char*) ")";
 int s = 0;
 int i = 0;
 while(arr2[i] != NULL){
