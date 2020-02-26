@@ -6,7 +6,7 @@
 using namespace std;
 
 
-Test::Test(char *arr){
+TestClass::TestClass(char *arr){
 	int SIZE = 0;
         while(arr[SIZE] != '\0') {
                 ++SIZE;
@@ -45,7 +45,7 @@ Test::Test(char *arr){
 }
 
 
-bool Test::run(){
+bool TestClass::run(){
 	struct stat buf;
         int num = -1;
 	char *eFlag =  (char*) "-e";
@@ -82,7 +82,7 @@ bool Test::run(){
 	return false;
 }
 
-void Test::display(){
+void TestClass::display(){
 	int i  = 0;
 	cout << "TESTCLASS" << endl;
 	while(toks[i] != NULL){

@@ -14,12 +14,12 @@
 #include  <string>
 using namespace std;
 
-class Test : public Token{
+class TestClass : public Token{
 	public:
-		Test(){};
-		Test(char* arr);
-		~Test() {}; // implemented
-		Test& operator=(const Test& t);
+		TestClass(){};
+		TestClass(char* arr);
+		~TestClass() {}; // implemented
+		TestClass& operator=(const TestClass& t);
 		bool run();
 		void display();
 		virtual bool isCon(){return false;};

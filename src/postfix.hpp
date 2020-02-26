@@ -71,7 +71,7 @@ CMD* buildTree(char** arr){
     else{
        if(temp[0] == 't' || temp[0] == 'T'){
           if(temp[1] == 'e' && temp[2] == 's' && temp[3] == 't' && temp[4] == ' '){
-		CMD* t = new Test(temp);
+		CMD* t = new TestClass(temp);
 		s.push(t);
 	  }
 	  else{
@@ -80,7 +80,7 @@ CMD* buildTree(char** arr){
 	  }
     	}
        else if(temp[0] == '['){
-	 CMD* t = new Test(temp);
+	 CMD* t = new TestClass(temp);
          s.push(t);
        }
        else{
