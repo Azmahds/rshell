@@ -1,5 +1,5 @@
-#include "Or.h"
-#include "Connector.h"
+#include "../head/Or.h"
+#include "../head/Connector.h"
 using namespace std;
 
 Or::Or() {

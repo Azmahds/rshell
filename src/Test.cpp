@@ -1,4 +1,4 @@
-#include "Test.h"
+#include "../head/Test.h"
 
 
 #include <iostream>

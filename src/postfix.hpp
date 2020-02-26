@@ -10,14 +10,14 @@
 #include <sstream>
 #include <cstring>
 
-#include "CMD.h"
-#include "Token.h"
-#include "Connector.h"
-#include "And.h"
-#include "Or.h"
-#include "Semicolon.h"
-#include "Exit.h"
-#include "Test.h"
+#include "../head/CMD.h"
+#include "../head/Token.h"
+#include "../head/Connector.h"
+#include "../head/And.h"
+#include "../head/Or.h"
+#include "../head/Semicolon.h"
+#include "../head/Exit.h"
+#include "../head/Test.h"
 
 using namespace std;
 

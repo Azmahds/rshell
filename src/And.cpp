@@ -1,5 +1,5 @@
-#include "And.h"
-#include "Connector.h"
+#include "../head/And.h"
+#include "../head/Connector.h"
 using namespace std;
 
 And::And() {

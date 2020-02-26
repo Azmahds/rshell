@@ -1,18 +1,19 @@
 #include "gtest/gtest.h"
 
 
-#include "../src/CMD.h"
-#include "../src/Token.h"
+#include "../head/CMD.h"
+#include "../head/Token.h"
 #include "../src/Token.cpp"
-#include "../src/Connector.h"
-#include "../src/Connector.h"
-#include "../src/And.h"
+#include "../head/Connector.h"
+#include "../head/And.h"
 #include "../src/And.cpp"
-#include "../src/Or.h"
+#include "../head/Or.h"
 #include "../src/Or.cpp"
-#include "../src/Semicolon.h"
+#include "../head/Semicolon.h"
 #include "../src/Semicolon.cpp"
-//#include "src/postfix.hpp"
+#include "../head/Exit.h"
+#include "../head/Test.h"
+#include "../src/Test.cpp"
 
 #include <iostream>
 #include <cstring>

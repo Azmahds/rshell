@@ -1,5 +1,5 @@
-#include "Semicolon.h"
-#include "Connector.h"
+#include "../head/Semicolon.h"
+#include "../head/Connector.h"
 using  namespace std;
 
 Semicolon::Semicolon(){

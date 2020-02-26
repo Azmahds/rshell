@@ -14,20 +14,20 @@ ADD_EXECUTABLE(main
     src/Or.cpp
     src/And.cpp
     src/Semicolon.cpp
-    src/CMD.h
-    src/Connector.h
+    head/CMD.h
+    head/Connector.h
     #src/postfix.hpp
 )
 
 ADD_EXECUTABLE(rshell
-    src/main.cpp
+    main.cpp
     src/Token.cpp
     src/Or.cpp
     src/And.cpp
     src/Semicolon.cpp
-    src/Exit.h
-    src/CMD.h
-    src/Connector.h
+    head/Exit.h
+    head/CMD.h
+    head/Connector.h
     src/postfix.hpp
     src/Test.cpp
 )
