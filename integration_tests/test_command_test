@@ -1,0 +1,4 @@
+(test ../src && ([ ../src ] && echo world))
+(test -e ../src && [-e ../src ]) && (test -f ../src && [ -f ../src ])
+ls && (test -d ../src && [ -d ../src ])
+exit
