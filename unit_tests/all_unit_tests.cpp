@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "single_line_unit_test.h"
+#include "classes_unit_test.h"
 #include "test_unit_test.h"
 
 int main(int argc, char **argv) {
