@@ -25,12 +25,15 @@
    The inheritance classes from the base class will be the Connector and Token subclass. Both of these classes will 
    contain virtual functions as well as a char** variable to keep track of what token or connector is inside of 
    their respective class. The connector class will have aditional pointers to its left and right hand tokens.
-   Inheriting from the token class will be the Exit subclass. This subclass will contain a run function that executes 
-   the commands from the tokens class. Lastly there will be three inheritance classes for the connector class. The first 
-   one is the AND subclass, which will have a run funtion that compares the left command and right command to see which 
-   command should be run in which order. The second one is the OR subclass, which will have a run function that compares 
-   the left and right commands to see which command should be executed. Finally, there is the SEMICOLON subclass. This 
-   subclass will just execute every command after itself, using its own run function.
+   Inheriting from the token class will be the Exit subclass and the TestClass subclass. This Exit subclass will contain a run 
+   function that exits the whole program when it is called. We also implemented a Test class that inherts from the Token class.
+   This class is responsible for executing the `test` and `[]` commands using `stat`. This class only takes into account for three
+   flags `-e, -f, and -d`. Lastly there will be three inheritance classes for the connector class. The first one is the AND subclass, 
+   which will have a run funtion that compares the left command and right command to see which command should be run in which order. 
+   The second one is the OR subclass, which will have a run function that compares the left and right commands to see which command 
+   should be executed. Finally, there is the SEMICOLON subclass. This subclass will just execute every command after itself, using its 
+   own run function. All these classes are executed by calling the run function on the root of the tree that we build. We build a tree
+   to take into account precedences. 
    
    ## PROTOTYPES/RESEARCH
    `fork()`    - The process for creating a child process that runs alongside the parent process. Returns an integer value.
