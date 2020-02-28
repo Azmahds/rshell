@@ -1,4 +1,4 @@
-#include "../head/Token.h"
+#include "../header/Token.h"
 #include <string.h>
 
 using namespace std;

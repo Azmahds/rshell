@@ -2,14 +2,14 @@
 #define SINGLE_LINE_UNIT_TEST_H_
 #include "gtest/gtest.h"
 
-#include "../head/CMD.h"
-#include "../head/Token.h"
-#include "../head/Connector.h"
-#include "../head/And.h"
-#include "../head/Or.h"
-#include "../head/Semicolon.h"
-#include "../head/Exit.h"
-#include "../head/Test.h"
+#include "../header/CMD.h"
+#include "../header/Token.h"
+#include "../header/Connector.h"
+#include "../header/And.h"
+#include "../header/Or.h"
+#include "../header/Semicolon.h"
+#include "../header/Exit.h"
+#include "../header/Test.h"
 
 #include <iostream>
 #include <cstring>

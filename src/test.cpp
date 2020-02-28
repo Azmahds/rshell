@@ -6,12 +6,12 @@
 #include <vector>
 #include <sys/wait.h>
 
-#include "../head/CMD.h"
-#include "../head/Token.h"
-#include "../head/Connector.h"
-#include "../head/And.h"
-#include "../head/Or.h"
-#include "../head/Semicolon.h"
+#include "../header/CMD.h"
+#include "../header/Token.h"
+#include "../header/Connector.h"
+#include "../header/And.h"
+#include "../header/Or.h"
+#include "../header/Semicolon.h"
 
 using namespace std;
 
