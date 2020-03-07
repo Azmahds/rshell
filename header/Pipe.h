@@ -5,12 +5,17 @@
 #include "CMD.h"
 #include "Connector.h"
 
+#include <cstring>
 using namespace std;
 
 class Pipe : public Connector {
 public:
 virtual bool run() {return false;};
-Pipe() {};
+Pipe() {
+	char* pSym = (char*)  "|";
+	cons[0] = pSym;
+	cons[1] = NULL;
+};
 ~Pipe(){};
 Pipe& operator=(const Pipe& p){return *this;};
 virtual void SetL(CMD* L){lhs = L;};

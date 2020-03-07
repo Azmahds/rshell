@@ -5,12 +5,17 @@
 #include "CMD.h"
 #include "Connector.h"
 
+#include <cstring>
 using namespace std;
 
 class OutRed : public Connector {
 public:
 virtual bool run() {return false;};
-OutRed() {};
+OutRed() { 
+	char* lArr = (char*) "<";
+	cons[0] = lArr;
+	cons[1] = NULL;
+};
 ~OutRed(){};
 OutRed& operator=(const OutRed& o){return *this;};
 virtual void SetL(CMD* L){lhs = L;};
