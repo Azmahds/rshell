@@ -61,12 +61,22 @@ CMD* buildTree(char** arr){
     }
 
     else if(strcmp(temp, sSym) == 0){
+    
+
       CMD *t = new Semicolon();
       t->SetR(s.top());
       s.pop();
+    
+      if(s.empty()){
+	t->SetL(t->GetR());
+	t->SetR(NULL);
+	s.push(t);
+      }
+      else{
       t->SetL(s.top());
       s.pop();
       s.push(t);
+      }
     }
     else{
        if(temp[0] == 't' || temp[0] == 'T'){
@@ -89,6 +99,7 @@ CMD* buildTree(char** arr){
 	}
     }
   }
+
   CMD* t = s.top();
   s.pop();
 

@@ -20,10 +20,11 @@
 
 using namespace std;
 
+string edit_string(string);
 
 int main(){
   char *cmd;
-  string input;
+  string input, p;
   bool run;
   vector<CMD*> command;
   vector<char*> t;
@@ -31,9 +32,52 @@ int main(){
   while(input != "exit"){
  	 cout << "$ ";
  	 getline(cin,input);
+	
+	p = edit_string(input);
+
+	if(p == "UNEVEN NUMP"){
+		cout << "ERROR: UNEVEN PARENTHESES" << endl;
+
+	}
+	else{
+  	 char **arr;
+	
+	 arr = parse(p);
+	
+/*	
+	int z = 0;
+	while(arr[z] != NULL){
+		cout << arr[z] << endl;
+		++z;
+	}
+*/	
+	
+ 	arr = infix_to_postfix(arr);
+	
+ 	CMD* tree = buildTree(arr);
+
+	tree->run();	
+
+	delete [] arr;
+	}
+	
+  }
+
+  return 0;
+}	
+
+
+
+string edit_string(string input){
 	 string s;
 	 string p;
 	 int nump = 0;	
+	
+	 if(input.at(input.size() - 1) == ';'){
+		input.at(input.size() - 1) = ' ';
+	 }
+
+
 	 for(int i = 0; i < input.size(); ++i){
 		s.push_back(input.at(i));
 		if( i+1 < input.size() && input.at(i+1) == ';'){
@@ -60,34 +104,10 @@ int main(){
 		}
 	
 	}
-
+	
 	if(nump % 2 != 0){
-		cout << "ERROR: UNEVEN PARENTHESES" << endl;
+		p = "UNEVEN NUMP";
+	}	
 
-	}
-	else{
-  	 char **arr;
-	
-	 arr = parse(p);
-
-	
- 	 arr = infix_to_postfix(arr);
-/*	
-	int z = 0;
-	while(arr[z] != NULL){
-		cout << arr[z] << endl;
-		++z;
-	}
-*/
-
- 	CMD* tree = buildTree(arr);
-//	tree->display();
-	tree->run();	
-	delete [] arr;
-	}
-	
-  }
-
-  return 0;
-}	
-
+	return p;
+}
