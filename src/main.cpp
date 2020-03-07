@@ -50,13 +50,20 @@ int main(){
 		cout << arr[z] << endl;
 		++z;
 	}
+	
 */	
-	
  	arr = infix_to_postfix(arr);
-	
- 	CMD* tree = buildTree(arr);
 
-	tree->run();	
+	int z = 0;
+	while(arr[z] != NULL){
+		cout << arr[z] << endl;
+		++z;
+	}
+	
+	
+// 	CMD* tree = buildTree(arr);
+
+//	tree->run();	
 
 	delete [] arr;
 	}
