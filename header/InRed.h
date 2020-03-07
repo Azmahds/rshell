@@ -14,12 +14,10 @@ class InRed : public Connector {
 public:
 virtual bool run() {return false;};
 InRed() {};
-InRed(char* arr) {
-	char* rArr = (char*) ">";
-	char* drArr =  (char*)  ">>";
-
-	if(strcmp(arr, rArr) == 0){cons[0] = rArr; cons[1] = NULL;}
-	else{cons[0] = drArr; cons[1] = NULL;}
+InRed() { 
+	char* lArr = (char*) "<";
+	cons[0] = lArr;
+	cons[1] = NULL;
 };
 ~InRed(){};
 InRed& operator=(const InRed& i){return *this;};
