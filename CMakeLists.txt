@@ -17,16 +17,6 @@ ADD_EXECUTABLE(test
     src/Test.cpp
 )
 
-ADD_EXECUTABLE(main
-    src/test.cpp
-    src/Token.cpp
-    src/Or.cpp
-    src/And.cpp
-    src/Semicolon.cpp
-    header/CMD.h
-    header/Connector.h
-    #src/postfix.hpp
-)
 
 ADD_EXECUTABLE(rshell
     src/main.cpp
