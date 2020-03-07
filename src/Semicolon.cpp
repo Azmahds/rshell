@@ -13,9 +13,9 @@ Semicolon::Semicolon(){
 }
 
 void Semicolon::display(){
-	lhs->display();
         cout  <<  "SEMICOLON" << endl;
-	rhs->display();
+	lhs->display();
+        rhs->display();
 }
 
 bool Semicolon::run(){

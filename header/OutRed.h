@@ -22,6 +22,8 @@ virtual void SetL(CMD* L){lhs = L;};
 virtual void SetR(CMD* R){rhs = R;};
 void display(){
 	cout << "OUTRED" << endl;
+	lhs->display();
+        rhs->display();
 }
 virtual bool isCon(){return true;};
 virtual bool isEx(){return false;};

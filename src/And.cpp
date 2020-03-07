@@ -14,9 +14,9 @@ And::And() {
 }
 
 void And::display(){
-	lhs->display();
 	cout << "AND" <<  endl;
-	rhs->display();
+	lhs->display();
+        rhs->display();
 }
 
 bool And::run(){

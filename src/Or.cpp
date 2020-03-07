@@ -13,9 +13,9 @@ Or::Or() {
 }
 
 void Or::display(){
-	lhs->display();
 	cout << "OR" << endl;
-	rhs->display();
+	lhs->display();
+        rhs->display();
 }
 
 bool Or::run(){

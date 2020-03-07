@@ -18,6 +18,9 @@
 #include "../header/Semicolon.h"
 #include "../header/Exit.h"
 #include "../header/Test.h"
+#include "../header/InRed.h"
+#include "../header/OutRed.h"
+#include "../header/Pipe.h"
 
 using namespace std;
 

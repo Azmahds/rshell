@@ -17,6 +17,9 @@
 #include "../header/Exit.h"
 #include "postfix.hpp"
 #include "../header/Test.h"
+#include "../header/InRed.h"
+#include "../header/OutRed.h"
+#include "../header/Pipe.h"
 
 using namespace std;
 
@@ -52,18 +55,12 @@ int main(){
 	}
 	
 */	
+
  	arr = infix_to_postfix(arr);
-
-	int z = 0;
-	while(arr[z] != NULL){
-		cout << arr[z] << endl;
-		++z;
-	}
 	
-	
-// 	CMD* tree = buildTree(arr);
+ 	CMD* tree = buildTree(arr);
 
-//	tree->run();	
+	tree->display();	
 
 	delete [] arr;
 	}

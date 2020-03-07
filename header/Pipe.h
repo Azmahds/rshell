@@ -21,7 +21,9 @@ Pipe& operator=(const Pipe& p){return *this;};
 virtual void SetL(CMD* L){lhs = L;};
 virtual void SetR(CMD* R){rhs = R;};
 void display(){
-	cout << "PIPE" << endl;
+        cout << "PIPE" <<  endl;
+        lhs->display();
+	rhs->display();
 }
 virtual bool isCon(){return true;};
 virtual bool isEx(){return false;};
