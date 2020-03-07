@@ -20,8 +20,11 @@ void And::display(){
 }
 
 bool And::run(){
-	if(lhs->run() && rhs->run()){
-		return true;
+	if(lhs->run() ){
+		if(rhs->run()){
+			return true;
+		}
+		
 	}
 	return false;
 }

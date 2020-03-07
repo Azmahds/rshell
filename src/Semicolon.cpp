@@ -20,7 +20,9 @@ void Semicolon::display(){
 
 bool Semicolon::run(){
 	lhs->run();
-	rhs->run();
+	if(rhs != NULL){
+		rhs->run();
+	}
 	return true;
 
   
