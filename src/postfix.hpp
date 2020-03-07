@@ -35,6 +35,10 @@ CMD* buildTree(char** arr){
   char *oSym = (char*) "||";
   char *sSym = (char*) ";";
   char *eSym = (char*) "exit";
+  char *lArr = (char*) "<";
+  char *rArr = (char*) ">";
+  char *drArr = (char*) ">>";
+  char *pSym = (char*) "|";
 
   for(unsigned i = 0; i < SIZE-1; ++i){
     char *temp = arr[i];
@@ -78,6 +82,34 @@ CMD* buildTree(char** arr){
       s.push(t);
       }
     }
+    
+    else if(strcmp(temp, lArr) == 0){
+      CMD *t = new OutRed();
+      t->SetR(s.top());
+      s.pop();
+      t->SetL(s.top());
+      s.pop();
+      s.push(t);
+    }
+    
+    else if(strcmp(temp, drArr) == 0 || strcmp(temp, rArr) == 0){
+      CMD *t = new InRed(temp);
+      t->SetR(s.top());
+      s.pop();
+      t->SetL(s.top());
+      s.pop();
+      s.push(t);
+    }
+
+    else if(strcmp(temp, pSym) == 0){
+      CMD *t = new Pipe();
+      t->SetR(s.top());
+      s.pop();
+      t->SetL(s.top());
+      s.pop();
+      s.push(t);
+    }
+
     else{
        if(temp[0] == 't' || temp[0] == 'T'){
           if(temp[1] == 'e' && temp[2] == 's' && temp[3] == 't' && temp[4] == ' '){
