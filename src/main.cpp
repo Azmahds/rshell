@@ -57,10 +57,10 @@ int main(){
 */	
 
  	arr = infix_to_postfix(arr);
-	
+		
  	CMD* tree = buildTree(arr);
 
-	tree->display();	
+//	tree->display();	
 
 	delete [] arr;
 	}

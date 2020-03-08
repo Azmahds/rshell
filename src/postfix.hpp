@@ -86,8 +86,8 @@ CMD* buildTree(char** arr){
       }
     }
     
-    else if(strcmp(temp, lArr) == 0){
-      CMD *t = new OutRed();
+    else if(strcmp(temp, rArr) == 0 || strcmp(temp, drArr) == 0){
+      CMD *t = new OutRed(temp);
       t->SetR(s.top());
       s.pop();
       t->SetL(s.top());
@@ -95,8 +95,8 @@ CMD* buildTree(char** arr){
       s.push(t);
     }
     
-    else if(strcmp(temp, drArr) == 0 || strcmp(temp, rArr) == 0){
-      CMD *t = new InRed(temp);
+    else if(strcmp(temp, lArr) == 0){
+      CMD *t = new InRed();
       t->SetR(s.top());
       s.pop();
       t->SetL(s.top());
@@ -493,16 +493,9 @@ while(arr2[i] != NULL){
                         ++s;
 
                 }
-                if(strcmp(c.top(), opSym) == 0 ){
+                if(strcmp(c.top(), opSym) == 0 && (!c.empty())){
                         c.pop();
                 }
-		if(!c.empty() && strcmp(c.top(), opSym) == 0 ){
-		  arr3[s] = c.top();
-		  c.pop();
-		  s++;
-		}
-		
-
         }
         else{
                 arr3[s] = arr2[i];

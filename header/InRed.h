@@ -13,7 +13,6 @@ using namespace std;
 class InRed : public Connector {
 public:
 virtual bool run() {return false;};
-InRed() {};
 InRed() { 
 	char* lArr = (char*) "<";
 	cons[0] = lArr;
