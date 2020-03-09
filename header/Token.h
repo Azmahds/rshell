@@ -15,6 +15,7 @@ class Token : public CMD{
 		Token& operator=(const Token& t);
 		bool run();
 		void display();
+		string GetFullTok(){string f = full_tok; return f;};
 		virtual bool isCon(){return false;};
 		virtual bool isEx(){return false;};
 		virtual void SetL(CMD* L){};
@@ -27,6 +28,7 @@ class Token : public CMD{
 		
 	protected:
 		char* toks[1024];
+		string full_tok = "";
 };
 
 #endif

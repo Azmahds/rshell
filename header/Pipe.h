@@ -10,7 +10,7 @@ using namespace std;
 
 class Pipe : public Connector {
 public:
-virtual bool run() {return false;};
+virtual bool run();
 Pipe() {
 	char* pSym = (char*)  "|";
 	cons[0] = pSym;

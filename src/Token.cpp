@@ -12,6 +12,7 @@ Token::Token(char*  arr) : CMD(){
 	int SIZE = 0;
 	while(arr[SIZE] != '\0') {
 		++SIZE;
+		full_tok.push_back(arr[SIZE-1]);
 	}   
 
 	for(int i = 0; i < SIZE; ++i){
