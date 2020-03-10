@@ -43,7 +43,7 @@ int main(){
 
 	}
 	else{
-  	 char **arr;
+ 	 char **arr;
 	
 	 arr = parse(p);
 	
@@ -53,14 +53,12 @@ int main(){
 		cout << arr[z] << endl;
 		++z;
 	}
+*/		
+	arr = infix_to_postfix(arr);
 	
-*/	
-
- 	arr = infix_to_postfix(arr);
-		
  	CMD* tree = buildTree(arr);
 
-//	tree->display();	
+	tree->display();	
 
 	delete [] arr;
 	}
@@ -74,6 +72,7 @@ int main(){
 
 string edit_string(string input){
 	 string s;
+	 string x;
 	 string p;
 	 int nump = 0;	
 	
@@ -81,10 +80,73 @@ string edit_string(string input){
 		input.at(input.size() - 1) = ' ';
 	 }
 
+	int n = 0;
+	for(int i = 0; i < input.size();++i){
+		x.push_back(input.at(i));
+		for(n = i+1;  n < input.size()-1;  ++n){
+			if((n+1 < input.size()) && (input.at(n)  ==  '&' && input.at(n+1)  == '&') ||  (input.at(n)  ==  '|' && input.at(n+1)  == '|') || input.at(n)  ==  ';' 
+			|| (input.at(n)  ==  '|' && input.at(n-1) != '|') || input.at(n)  ==  '>' || input.at(n)  ==  '<'){break;}
+		}
 
-	 for(int i = 0; i < input.size(); ++i){
-		s.push_back(input.at(i));
-		if( i+1 < input.size() && input.at(i+1) == ';'){
+		if(input.at(i) == '|' || input.at(i) == ';' || input.at(i) == '&'){
+			if(input.at(i+1) == '|' || input.at(i+1) == '&'){
+				++i;
+				x.push_back(input.at(i));
+			}
+			if(i == n){}
+			else{
+				if(input.at(n) ==  '>' && input.at(n+1) != '>' ||  input.at(n) == '<'){
+					x.push_back(' ');
+					x.push_back('(');
+					int  k = 0;
+					for (k = n+1; k < input.size(); ++k){
+						if(input.at(k) == '&' || input.at(k) == '|' || input.at(k) == ';' || input.at(k) == '>' || input.at(k) == '<'){break;}	
+					}
+					int l = 0;
+					for(l = i+1;  l < k; ++l){
+						x.push_back(input.at(l));
+					}
+					i = l-1;
+					x.push_back(')');
+					x.push_back(' ');
+				}
+				else if(input.at(n) == '>' && input.at(n+1) == '>'){
+					x.push_back(' ');
+					x.push_back('(');
+					int  k = 0;
+					for (k = n+2; k < input.size(); ++k){
+						if(input.at(k) == '&' || input.at(k) == '|' || input.at(k) == ';' || input.at(k) == '>' || input.at(k) == '<'){break;}	
+					}
+					int l = 0;
+					for(l = i+1;  l < k; ++l){
+						x.push_back(input.at(l));
+					}
+					i = l-1;
+					x.push_back(')');
+					x.push_back(' ');
+				}
+			}
+		}
+		
+		else if(input.at(i) == '<'){
+			if(input.at(n) == '>'){
+				int m = 0;
+				for(m = x.size()-2; m > -1; --m){
+					if(x.at(m) == '&' || x.at(m) == '|' || x.at(m) == ';' || x.at(m) == '>' || x.at(m) == '<'){break;}
+				}
+				m += 1;
+				x.insert(m, " ( ");
+				for (m = i+1; m < n; ++m){x.push_back(input.at(m));}
+				x.push_back(')');
+				x.push_back(' ');			
+				i = m-1;
+			}
+		}		 
+	}
+
+	 for(int i = 0; i < x.size(); ++i){
+		s.push_back(x.at(i));
+		if( i+1 < x.size() && x.at(i+1) == ';'){
 			s.push_back(' ');
 		}
          } 

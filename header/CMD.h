@@ -28,5 +28,6 @@ virtual CMD* GetR() = 0;
 virtual bool isAnd()=0;
 virtual bool isOr()=0;
 virtual bool isSemicolon()=0;
+virtual string GetFullTok()=0;
 };
 #endif

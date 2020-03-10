@@ -23,6 +23,7 @@ class Exit : public Token{
 		virtual bool isAnd(){return false;};
 		virtual bool isOr(){return  false;};
 		virtual bool isSemicolon(){return false;};
+		virtual string GetFullTok(){return "";};
 
 	protected:
 	char* ex[6];

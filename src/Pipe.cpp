@@ -41,11 +41,11 @@ bool Pipe::run() {
 	
 	else{
 
-		Token* lT = l;
-		Token* rT = r;
+
+		
  
-		string left = lT->GetFullTok();
-		string right = rT->GetFullTok();
+		string left = l->GetFullTok();
+		string right = r->GetFullTok();
 
 		string r = "r";
 		string w = "w";

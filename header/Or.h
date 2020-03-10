@@ -25,7 +25,7 @@ virtual CMD* GetR(){return rhs;};
 virtual bool isAnd(){return false;};
 virtual bool isOr(){return  true;};
 virtual bool isSemicolon(){return false;};
-
+virtual string GetFullTok(){return "";};
 void display();
 };
 #endif

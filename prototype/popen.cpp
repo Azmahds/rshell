@@ -14,9 +14,11 @@ using namespace std;
 
 int main(){
 	
-	string l = "ec";
+	string l = "ls";
 	string r = "r";
 	string w = "w";
+	
+	char c;
 
 	const int MAX =  100;
 
@@ -27,12 +29,11 @@ int main(){
 	memset(buffer2, '\0',  MAX);
 
 	FILE* LHS = popen(l.c_str(), r.c_str());
-
-	if(fgets(buffer, MAX, LHS)  == nullptr){
-		cout <<  "WAS NULL";
-	}
+	
 
 	pclose(LHS);
+
+	int thx = system(l.c_str());
 
 	return 0;
 }
