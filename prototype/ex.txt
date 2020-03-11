@@ -1,0 +1,8 @@
+a.out
+ex.txt
+parse.cpp
+popen.cpp
+pretest.cpp
+same.txt
+sam.t
+t.cpp

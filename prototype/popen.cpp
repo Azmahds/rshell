@@ -14,7 +14,7 @@ using namespace std;
 
 int main(){
 	
-	string l = "ls";
+	string l = "ex.txt";
 	string r = "r";
 	string w = "w";
 	
@@ -28,12 +28,15 @@ int main(){
 	memset(buffer, '\0',  MAX);
 	memset(buffer2, '\0',  MAX);
 
-	FILE* LHS = popen(l.c_str(), r.c_str());
+	FILE* LHS = popen(l.c_str(), w.c_str());
 	
-
+	if(LHS == nullptr){
+		cout << "DID NOT WORK" << endl;
+	}
+	
 	pclose(LHS);
 
-	int thx = system(l.c_str());
+//	int thx = system(l.c_str());
 
 	return 0;
 }
