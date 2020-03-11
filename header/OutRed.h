@@ -5,13 +5,22 @@
 #include "CMD.h"
 #include "Connector.h"
 
+#include <iostream>
+#include <string>
 #include <cstring>
 using namespace std;
 
 class OutRed : public Connector {
 public:
-virtual bool run() {return false;};
-OutRed(){};
+virtual bool run();
+OutRed(){
+
+char * rArr = (char*) ">";
+cons[0] = rArr;
+cons[1] = NULL;
+
+
+};
 OutRed(char* arr) {
 	char* rArr = (char*) ">";
 	char* drArr =  (char*)  ">>";

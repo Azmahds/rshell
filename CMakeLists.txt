@@ -31,6 +31,7 @@ ADD_EXECUTABLE(rshell
     src/Test.cpp
     src/Pipe.cpp
     src/InRed.cpp
+    src/OutRed.cpp
 )
 
 

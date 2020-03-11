@@ -88,6 +88,7 @@ CMD* buildTree(char** arr){
     
     else if(strcmp(temp, rArr) == 0 || strcmp(temp, drArr) == 0){
       CMD *t = new OutRed(temp);
+//	CMD* t = new OutRed();
       t->SetR(s.top());
       s.pop();
       t->SetL(s.top());
