@@ -37,15 +37,15 @@ int main(){
  	 getline(cin,input);
 	
 	p = edit_string(input);
-
+cout << p << endl;
 	if(p == "UNEVEN NUMP"){
 		cout << "ERROR: UNEVEN PARENTHESES" << endl;
 
 	}
 	else{
- 	 char **arr;
+// 	 char **arr;
 	
-	 arr = parse(p);
+//	 arr = parse(p);
 	
 /*	
 	int z = 0;
@@ -54,13 +54,13 @@ int main(){
 		++z;
 	}
 */		
-	arr = infix_to_postfix(arr);
-	
- 	CMD* tree = buildTree(arr);
+//	arr = infix_to_postfix(arr);
 
-	tree->run();	
+ //	CMD* tree = buildTree(arr);
 
-	delete [] arr;
+//	tree->run();	
+
+//	delete [] arr;
 	}
 	
   }
@@ -127,7 +127,6 @@ string edit_string(string input){
 				}
 			}
 		}
-		
 		else if(input.at(i) == '<'){
 			if(input.at(n) == '>'){
 				int m = 0;

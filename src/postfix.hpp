@@ -91,8 +91,10 @@ CMD* buildTree(char** arr){
 //	CMD* t = new OutRed();
       t->SetR(s.top());
       s.pop();
-      t->SetL(s.top());
-      s.pop();
+      if(!s.empty()){
+	t->SetL(s.top());
+      	s.pop();
+      }
       s.push(t);
     }
     
