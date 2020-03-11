@@ -18,9 +18,10 @@ OutRed(){
 char * rArr = (char*) ">";
 cons[0] = rArr;
 cons[1] = NULL;
-
-
 };
+
+virtual char* execute(){};
+
 OutRed(char* arr) {
 	char* rArr = (char*) ">";
 	char* drArr =  (char*)  ">>";

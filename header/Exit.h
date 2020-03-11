@@ -9,6 +9,7 @@ using namespace std;
 
 class Exit : public Token{
         public:
+		char* execute(){return NULL;};
                 bool run() { exit(0); }
                 Exit(){ex[0] = NULL;};
 		~Exit(){};

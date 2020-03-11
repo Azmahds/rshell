@@ -25,7 +25,7 @@ class Token : public CMD{
 		virtual bool isAnd(){return false;};
 		virtual bool isOr(){return  false;};
 		virtual bool isSemicolon(){return false;};
-		
+		char* execute(){return NULL;};		
 	protected:
 		char* toks[1024];
 		string full_tok = "";

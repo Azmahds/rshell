@@ -15,7 +15,7 @@ Or(char* arr){
     cons[0] = arr;
     cons[1] = NULL; 
 };
-
+char* execute(){return NULL;};
 virtual void SetL(CMD* L);
 virtual void SetR(CMD* R);
 virtual bool isCon(){return true;};

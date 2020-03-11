@@ -32,7 +32,7 @@ class TestClass : public Token{
 		virtual bool isOr(){return  false;};
 		virtual bool isSemicolon(){return false;};
 		virtual string GetFullTok(){return "";};
-
+		char* execute(){return NULL;};
 };
 
 
