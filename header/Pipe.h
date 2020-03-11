@@ -6,6 +6,16 @@
 #include "Connector.h"
 
 #include <cstring>
+#include <iostream>
+#include <vector>
+#include  <string>
+#include <thread>
+#include <chrono>
+#include <cstdlib>
+#include <unistd.h>
+#include  <cassert>
+#include <fcntl.h>
+#include <stdio.h>
 using namespace std;
 
 class Pipe : public Connector {

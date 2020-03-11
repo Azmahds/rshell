@@ -4,6 +4,18 @@
 #include "CMD.h"
 #include "Token.h"
 
+
+#include <iostream>
+#include <vector>
+#include  <string>
+#include  <cstring>
+#include <thread>
+#include <chrono>
+#include <cstdlib>
+#include <unistd.h>
+#include  <cassert>
+#include <fcntl.h>
+#include <stdio.h>
 using namespace std;
 
 class Connector : public CMD {
