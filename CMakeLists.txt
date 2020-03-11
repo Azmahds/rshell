@@ -30,6 +30,7 @@ ADD_EXECUTABLE(rshell
     src/postfix.hpp
     src/Test.cpp
     src/Pipe.cpp
+    src/InRed.cpp
 )
 
 
