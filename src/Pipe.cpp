@@ -19,7 +19,44 @@ bool Pipe::run() {
 	CMD* r = this->GetR();
 
 	if(l->isCon() && !(r->isCon())){
- 		
+ 		char *left;
+		string lt;
+		bool inif = false;
+		if(l->isAnd() || l->isOr() || l->isSemicolon()){
+			inif = true;
+			l->run();
+			lt = l->GetR()->GetFullTok();
+		}
+		else{
+			left = l->execute();
+		}
+		
+		string right = r->GetFullTok();		
+		string r = "r";
+		string w = "w";
+
+		const int MAX =  500;
+
+		char buffer[MAX];
+
+		memset(buffer, '\0',  MAX);
+
+		FILE* lhs;		
+		if(!inif){lhs = popen(left, r.c_str());}
+		else{lhs = popen(lt.c_str(), r.c_str());}
+
+		FILE* rhs = popen(right.c_str(), w.c_str());
+
+		if(rhs == nullptr) {pclose(lhs); pclose(rhs); return false;}	
+		
+		while(fgets(buffer, MAX, lhs) != nullptr){
+			fputs(buffer, rhs);
+		}
+
+		pclose(lhs);
+		pclose(rhs);
+
+		return true;
         }	
 	else{
 		string left = l->GetFullTok();
@@ -51,5 +88,81 @@ bool Pipe::run() {
 }
 
 char* Pipe::execute(){
-	return NULL;
+	CMD* l = this->GetL();
+	CMD* r = this->GetR();
+	
+	char *arr = new char[5000];
+
+	memset(arr, '\0', 5000);
+	
+	if(l->isCon() && !(r->isCon())){
+ 		char *left;
+		string lt;
+		bool inif = false;
+		if(l->isAnd() || l->isOr() || l->isSemicolon()){
+			inif = true;
+			l->execute();
+			lt = l->GetR()->GetFullTok();
+		}
+		else{
+			left = l->execute();
+		}
+		
+		string right = r->GetFullTok();		
+		string r = "r";
+		string w = "w";
+
+		const int MAX =  500;
+
+		char buffer[MAX];
+
+		memset(buffer, '\0',  MAX);
+
+		FILE* lhs;		
+		if(!inif){lhs = popen(left, r.c_str());}
+		else{lhs = popen(lt.c_str(), r.c_str());}
+
+		FILE* rhs = popen(right.c_str(), w.c_str());
+
+		if(rhs == nullptr) {pclose(lhs); pclose(rhs); return NULL;}	
+		
+		while(fgets(buffer, MAX, lhs) != nullptr){
+			fputs(buffer, rhs);
+			strcat(arr,  buffer);
+		}
+
+		pclose(lhs);
+		pclose(rhs);
+
+		return arr;
+        }	
+	else{
+		string left = l->GetFullTok();
+		string right = r->GetFullTok();
+		
+		string r = "r";
+		string w = "w";
+
+		const int MAX =  500;
+
+		char buffer[MAX];
+
+		memset(buffer, '\0',  MAX);
+
+		FILE* lhs = popen(left.c_str(), r.c_str());
+		FILE* rhs = popen(right.c_str(), w.c_str());
+
+		if(rhs == nullptr) {pclose(lhs); pclose(rhs); return NULL;}	
+		
+		while(fgets(buffer, MAX, lhs) != nullptr){
+			fputs(buffer, rhs);
+			strcat(arr, buffer);
+		}
+
+		pclose(lhs);
+		pclose(rhs);
+
+		return arr;
+	}
+
 }

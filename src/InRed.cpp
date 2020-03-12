@@ -43,32 +43,28 @@ char* InRed::execute(){
 	char* arr = new char[size];
 	strcpy(arr, "");
 
-	if(!(L->isCon()) && !(R->isCon())){
-		string lhs = L->GetFullTok();
-		string rhs = R->GetFullTok();	
+	string lhs = L->GetFullTok();}
+	string rhs = R->GetFullTok();	
 
-		string fin = lhs + " < " + rhs;
+	string fin = lhs + " < " + rhs;
 
-		string r = "r";
+	string r = "r";
 	
-		const int max = 256;
+	const int max = 256;
 	
-		char BUF[max];
+	char BUF[max];
 
-		memset(BUF, '\0', max);
+	memset(BUF, '\0', max);
 		
-		FILE* com = popen(fin.c_str(), r.c_str());
+	FILE* com = popen(fin.c_str(), r.c_str());
 
-		if(com == nullptr){return NULL;}
+	if(com == nullptr){return NULL;}
 		
-		while(fgets(BUF, max, com) != nullptr){
-			strcat(arr, BUF);
-		}
-		
-		pclose(com);
-
-		return arr;
+	while(fgets(BUF, max, com) != nullptr){
+		strcat(arr, BUF);
 	}
+		
+	pclose(com);
 
-
+	return arr;
 }
