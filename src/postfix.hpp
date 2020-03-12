@@ -537,8 +537,8 @@ int priority(char* c){
 	
 	if (strcmp(c, opSym)  == 0){return 4;}
 	else if(strcmp(c, irSym)  == 0){return 3;}
-	else if(strcmp(c, oprSym)  == 0 || strcmp(c, doprSym)  == 0){return 2;}
-	else if(strcmp(c, aSym)  == 0 || strcmp(c, sSym)  == 0 || strcmp(c, oSym)  == 0 || strcmp(c, pSym)  == 0){return 1;}
+	else if(strcmp(c, oprSym)  == 0 || strcmp(c, doprSym)  == 0 || strcmp(c, pSym)  == 0){return 2;}
+	else if(strcmp(c, aSym)  == 0 || strcmp(c, sSym)  == 0 || strcmp(c, oSym)  == 0 ){return 1;}
 	else if(strcmp(c, cpSym)  == 0){return 0;}
 	return -1;
 }
