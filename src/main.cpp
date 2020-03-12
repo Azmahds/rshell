@@ -37,7 +37,7 @@ int main(){
  	 getline(cin,input);
 	
 	p = edit_string(input);
-cout << p << endl;
+//cout << p << endl;
 	if(p == "UNEVEN NUMP"){
 		cout << "ERROR: UNEVEN PARENTHESES" << endl;
 
@@ -80,6 +80,7 @@ string edit_string(string input){
 		input.at(input.size() - 1) = ' ';
 	 }
 
+/*
 	int n = 0;
 	for(int i = 0; i < input.size();++i){
 		x.push_back(input.at(i));
@@ -186,10 +187,10 @@ string edit_string(string input){
 			}
 		}		 
 	}
-
-	 for(int i = 0; i < x.size(); ++i){
-		s.push_back(x.at(i));
-		if( i+1 < x.size() && x.at(i+1) == ';'){
+*/
+	 for(int i = 0; i < input.size(); ++i){
+		s.push_back(input.at(i));
+		if( i+1 < input.size() && input.at(i+1) == ';'){
 			s.push_back(' ');
 		}
          } 

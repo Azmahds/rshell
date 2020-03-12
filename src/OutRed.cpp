@@ -9,7 +9,7 @@ bool OutRed::run() {
 		string hs = R->GetFullTok();
                 string rhs;
                 string w = "w", a = "a";
-	  cout << "IN L NULL IF" << endl;
+
                 char* rArr = (char*)  ">";
                 char* drArr = (char*) ">>";
                 char* temp = cons[0];

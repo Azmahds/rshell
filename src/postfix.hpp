@@ -24,6 +24,7 @@
 
 using namespace std;
 
+int priority(char*);
 
 CMD* buildTree(char** arr){
   stack<CMD*> s;
@@ -483,13 +484,20 @@ char *doprSym = (char*) ">>";
 int s = 0;
 int i = 0;
 while(arr2[i] != NULL){
-        if((strcmp(arr2[i], aSym) == 0) || (strcmp(arr2[i], oSym) == 0) || (strcmp(arr2[i], sSym) == 0) || (strcmp(arr2[i], opSym) == 0) ){
+        int pr = priority(arr2[i]);
+	if(pr == -1){
                 c.push(arr2[i]);
         }
-	else if((strcmp(arr2[i], pSym) == 0) || (strcmp(arr2[i], irSym) == 0) || (strcmp(arr2[i], oprSym) == 0) || (strcmp(arr2[i], doprSym) == 0) ){
-                c.push(arr2[i]);
-        }
-        else if(strcmp(arr2[i], cpSym) == 0){
+        else if(pr > 0){
+		while(!(c.empty()) && ((priority(c.top()) == -1) || (priority(c.top()) > pr) && (priority(c.top()) != 4))){
+			arr3[s] = c.top();
+			c.pop();
+			++s;
+		}
+		c.push(arr2[i]);
+	}
+	
+	else if(pr == 0){
                 while(strcmp(c.top(), opSym) != 0  && (!c.empty())){
                         arr3[s] = c.top();
                         c.pop();
@@ -499,10 +507,6 @@ while(arr2[i] != NULL){
                 if(strcmp(c.top(), opSym) == 0 && (!c.empty())){
                         c.pop();
                 }
-        }
-        else{
-                arr3[s] = arr2[i];
-                ++s;
         }
 ++i;
 }
@@ -518,6 +522,25 @@ delete [] arr2;
 
 return arr3;
 
+}
+
+int priority(char* c){
+	char *aSym = (char*) "&&";
+	char *oSym = (char*) "||";
+	char *sSym = (char*) ";";
+	char *pSym = (char*) "|";
+	char *irSym = (char*) "<";
+	char *oprSym = (char*) ">";
+	char *doprSym = (char*) ">>";
+	char *opSym = (char*) "(";
+	char *cpSym = (char*) ")";
+	
+	if (strcmp(c, opSym)  == 0){return 4;}
+	else if(strcmp(c, irSym)  == 0){return 3;}
+	else if(strcmp(c, oprSym)  == 0 || strcmp(c, doprSym)  == 0){return 2;}
+	else if(strcmp(c, aSym)  == 0 || strcmp(c, sSym)  == 0 || strcmp(c, oSym)  == 0 || strcmp(c, pSym)  == 0){return 1;}
+	else if(strcmp(c, cpSym)  == 0){return 0;}
+	return -1;
 }
 
 
