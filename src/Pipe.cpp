@@ -15,42 +15,20 @@
 using namespace std;
 
 bool Pipe::run() {
-
 	CMD* l = this->GetL();
 	CMD* r = this->GetR();
 	
-	bool lCon = false;
-	bool rCon =  false;
-	
-	bool fin = false;
-
-	if(l->isCon() && r->isCon()){
-		lCon = l->run();
-		return r->run();
-	}
-	
-	else if(l->isCon() && !(r->isCon())){
-                lCon = l->run();
-		
-		
-        }
-	
-	else if(!(l->isCon()) && r->isCon()){
-                lCon = l->run();
-        }		
-	
+	if(l->isCon() && !(r->isCon())){
+        			   		
+        }	
 	else{
-
-
-		
- 
 		string left = l->GetFullTok();
 		string right = r->GetFullTok();
 
 		string r = "r";
 		string w = "w";
 
-		const int MAX =  256;
+		const int MAX =  500;
 
 		char buffer[MAX];
 		char buffer2[MAX];
@@ -59,19 +37,19 @@ bool Pipe::run() {
 		memset(buffer2, '\0',  MAX);
 
 		FILE* lhs = popen(left.c_str(), r.c_str());
-		FILE* rhs = popen(right.c_str(), r.c_str());
-
-		if(fgets(buffer, MAX, lhs)  == nullptr){
-			if(fgets(buffer, MAX, rhs) != nullptr) {pclose(lhs); pclose(rhs); return true;}
+		FILE* rhs = popen(right.c_str(), w.c_str());
+		
+		while(fgets(buffer, MAX, rhs) != nullptr){
+			fputs(buffer, rhs);
 		}
-		
-		if(fgets(buffer, MAX, rhs) != nullptr) {fin = true;}
-		
 
 		pclose(lhs);
 		pclose(rhs);
 
-		return fin;
+		return true;
 	}
+}
 
+char* Pipe::execute(){
+	return NULL;
 }
