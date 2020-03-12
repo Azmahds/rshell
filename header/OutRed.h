@@ -20,7 +20,11 @@ cons[0] = rArr;
 cons[1] = NULL;
 };
 
+<<<<<<< HEAD
 virtual char* execute();
+=======
+virtual FILE* execute();
+>>>>>>> dbd76bebf87c3e7a75eb9352f42918e4f7919169
 
 OutRed(char* arr) {
 	char* rArr = (char*) ">";

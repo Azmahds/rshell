@@ -21,7 +21,7 @@ using namespace std;
 class Connector : public CMD {
 public:
 virtual bool run() = 0;
-char* execute(){return NULL;};
+FILE* execute(){return nullptr;};
 Connector() {};
 Connector(char* arr){
     cons[0] = arr;
