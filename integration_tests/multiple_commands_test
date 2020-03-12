@@ -1,3 +1,4 @@
+ls
 echo SHOULD BE hi THEN rhs
 echo hi || echo hello
 ecakjdbgaj || echo rhs
