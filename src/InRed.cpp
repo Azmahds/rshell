@@ -30,7 +30,7 @@ bool InRed::run() {
 	pclose(com);
 
 	return true;
-	}
+	
 }
 
 
