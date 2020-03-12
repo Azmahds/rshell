@@ -19,7 +19,7 @@ bool Pipe::run() {
 	CMD* r = this->GetR();
 
 	if(l->isCon() && !(r->isCon())){
-		char *left;
+		FILE *left;
 		string lt;
 		bool inif = false;
 		if(l->isAnd() || l->isOr() || l->isSemicolon()){
@@ -42,8 +42,8 @@ bool Pipe::run() {
 		memset(buffer, '\0',  MAX);
 cout << left << endl;
 		FILE* lhs;		
-		if(!inif){lhs = popen(left, r.c_str());}
-		else{lhs = popen(lt.c_str(), r.c_str());}
+	//	if(!inif){lhs = popen(left, r.c_str());}
+	//	else{lhs = popen(lt.c_str(), r.c_str());}
 
 		FILE* rhs = popen(right.c_str(), w.c_str());
 		
@@ -88,7 +88,7 @@ cout << left << endl;
 	}
 }
 
-char* Pipe::execute(){
+FILE* Pipe::execute(){
 	CMD* l = this->GetL();
 	CMD* r = this->GetR();
 	
@@ -97,7 +97,7 @@ char* Pipe::execute(){
 	memset(arr, '\0', 5000);
 	
 	if(l->isCon() && !(r->isCon())){
- 		char *left;
+ 		FILE *left;
 		string lt;
 		bool inif = false;
 		if(l->isAnd() || l->isOr() || l->isSemicolon()){
@@ -106,7 +106,7 @@ char* Pipe::execute(){
 			lt = l->GetR()->GetFullTok();
 		}
 		else{
-			left = l->execute();
+		//	left = l->execute();
 		}
 		
 		string right = r->GetFullTok();		
@@ -120,12 +120,12 @@ char* Pipe::execute(){
 		memset(buffer, '\0',  MAX);
 
 		FILE* lhs;		
-		if(!inif){lhs = popen(left, r.c_str());}
-		else{lhs = popen(lt.c_str(), r.c_str());}
+	//	if(!inif){lhs = popen(left, r.c_str());}
+	//	else{lhs = popen(lt.c_str(), r.c_str());}
 
 		FILE* rhs = popen(right.c_str(), w.c_str());
 
-		if(rhs == nullptr) {pclose(lhs); pclose(rhs); return NULL;}	
+		if(rhs == nullptr) {pclose(lhs); pclose(rhs); return nullptr;}	
 		
 		while(fgets(buffer, MAX, lhs) != nullptr){
 			fputs(buffer, rhs);
@@ -135,7 +135,7 @@ char* Pipe::execute(){
 		pclose(lhs);
 		pclose(rhs);
 
-		return arr;
+		return nullptr;
         }	
 	else{
 		string left = l->GetFullTok();
@@ -153,7 +153,7 @@ char* Pipe::execute(){
 		FILE* lhs = popen(left.c_str(), r.c_str());
 		FILE* rhs = popen(right.c_str(), w.c_str());
 
-		if(rhs == nullptr) {pclose(lhs); pclose(rhs); return NULL;}	
+		if(rhs == nullptr) {pclose(lhs); pclose(rhs); return nullptr;}	
 		
 		while(fgets(buffer, MAX, lhs) != nullptr){
 			fputs(buffer, rhs);
@@ -163,7 +163,7 @@ char* Pipe::execute(){
 		pclose(lhs);
 		pclose(rhs);
 
-		return arr;
+		return nullptr;
 	}
 
 }

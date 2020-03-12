@@ -20,12 +20,7 @@ cons[0] = rArr;
 cons[1] = NULL;
 };
 
-<<<<<<< HEAD
-virtual char* execute();
-=======
 virtual FILE* execute();
->>>>>>> dbd76bebf87c3e7a75eb9352f42918e4f7919169
-
 OutRed(char* arr) {
 	char* rArr = (char*) ">";
 	char* drArr =  (char*)  ">>";
@@ -39,7 +34,7 @@ virtual void SetL(CMD* L){lhs = L;};
 virtual void SetR(CMD* R){rhs = R;};
 void display(){
 	cout << "OUTRED" << endl;
-	lhs->display();
+	if(lhs != NULL){lhs->display();}
         rhs->display();
 }
 virtual bool isCon(){return true;};

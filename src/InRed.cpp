@@ -14,20 +14,18 @@ bool InRed::run() {
 	string r = "r";
 	
 	const int max = 256;
-	
 	char BUF[max];
-
 	memset(BUF, '\0', max);
 		
-	FILE* com = fopen(fin.c_str(), r.c_str());
+	FILE* com = popen(fin.c_str(), r.c_str());
 
-	if(com == nullptr){return false;}
+	if(com == nullptr){cout << "ERROR" << endl; return false;}
 		
 	while(fgets(BUF, max, com) != nullptr){
 		cout << BUF;
 	}
 		
-	fclose(com);
+	pclose(com);
 
 	return true;
 	
@@ -36,7 +34,7 @@ bool InRed::run() {
 
 
 FILE* InRed::execute(){
-	this->run();
+
 	CMD* L = this->GetL();
 	CMD* R = this->GetR();
 
@@ -55,9 +53,7 @@ FILE* InRed::execute(){
 		
 	FILE* com = popen(fin.c_str(), r.c_str());
 
-	if(arr == nullptr){return nullptr;}
-		
+	if(com == nullptr){return nullptr;}		
 
-
-	return nullptr;
+	return com;
 }

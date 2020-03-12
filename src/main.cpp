@@ -37,7 +37,7 @@ int main(){
  	 getline(cin,input);
 	
 	p = edit_string(input);
-cout << p << endl;
+//cout << p << endl;
 	if(p == "UNEVEN NUMP"){
 		cout << "ERROR: UNEVEN PARENTHESES" << endl;
 
@@ -53,12 +53,13 @@ cout << p << endl;
 		cout << arr[z] << endl;
 		++z;
 	}
-*/		
+*/
 	arr = infix_to_postfix(arr);
-
- 	CMD* tree = buildTree(arr);
-
+ 	
+	CMD* tree = buildTree(arr);
+	
 	tree->run();	
+	//tree->display();
 
 	delete [] arr;
 	}

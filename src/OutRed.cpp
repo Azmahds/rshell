@@ -5,7 +5,7 @@ bool OutRed::run() {
 	CMD* L = this->GetL();
 	CMD* R = this->GetR();
 	
-	if(L ==  NULL){
+	if(L == NULL){
 		string hs = R->GetFullTok();
                 string rhs;
                 string w = "w", a = "a";
@@ -79,7 +79,11 @@ bool OutRed::run() {
                 string r  = "r";
                 string a = "a";
 	
-		char *lhs = L->execute();
+		FILE *lhs = L->execute();
+
+		const int max = 256;
+                char BUF[max];
+                memset(BUF, '\0', max);
 
                 char* rArr = (char*)  ">";
                 char* drArr = (char*) ">>";
@@ -97,13 +101,15 @@ bool OutRed::run() {
                          com2 = fopen(hs.c_str(), w.c_str());
                 }
 
-                if(com2 == nullptr){ delete [] lhs; return false;}
+                if(com2 == nullptr){pclose(com2); fclose(lhs); return false;}
                 
-                fputs(lhs, com2);
+                while(fgets(BUF, max, lhs) != nullptr){
+			fputs(BUF, com2);
+		}
 
                 fclose(com2);
+		fclose(lhs);
 
-		delete [] lhs;
                 return true;
 	}
 }

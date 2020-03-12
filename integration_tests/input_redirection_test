@@ -4,5 +4,5 @@ echo 1 && cat < textfiles/test.txt > textfiles/some.txt; cat textfiles/some.txt
 tr a-z A-Z < textfiles/test.txt > textfiles/some.txt; cat < textfiles/some.txt
 sort < textfiles/test.txt >> textfiles/some.txt 
 sort <  textfiles/some.txt > textfiles/some.txt && cat < textfiles/some.txt
-(echo hello > textfiles/some.txt; (echo bye >> textfiles/some.txt && (echo || echo 2) && ls >> textfiles/some.txt; sort < textfiles/some.txt; sort < textfiles/some.txt > textfiles/some.txt )); exit
+(echo hello > textfiles/some.txt; (echo bye >> textfiles/some.txt && (echo || echo 2) && ls >> textfiles/some.txt; sort < textfiles/some.txt; sort < textfiles/test.txt > textfiles/some.txt )); exit
 //ls; > textfiles/some.txt 
