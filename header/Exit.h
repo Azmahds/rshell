@@ -9,7 +9,7 @@ using namespace std;
 
 class Exit : public Token{
         public:
-		char* execute(){return NULL;};
+		FILE* execute(){return nullptr;};
                 bool run() { exit(0); }
                 Exit(){ex[0] = NULL;};
 		~Exit(){};

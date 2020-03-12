@@ -58,7 +58,7 @@ int main(){
 
  	CMD* tree = buildTree(arr);
 
-	tree->display();	
+	tree->run();	
 
 	delete [] arr;
 	}

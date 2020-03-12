@@ -20,7 +20,7 @@ using namespace std;
 
 class Pipe : public Connector {
 public:
-virtual char* execute();
+virtual FILE* execute();
 virtual bool run();
 Pipe() {
 	char* pSym = (char*)  "|";

@@ -43,7 +43,7 @@ char* InRed::execute(){
 	char* arr = new char[size];
 	strcpy(arr, "");
 
-	string lhs = L->GetFullTok();}
+	string lhs = L->GetFullTok();
 	string rhs = R->GetFullTok();	
 
 	string fin = lhs + " < " + rhs;

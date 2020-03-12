@@ -18,7 +18,7 @@ CMD() = default;
 virtual ~CMD(){};
 virtual CMD& operator=(const CMD& c){return *this;};
 virtual bool run() = 0;
-virtual char* execute()=0;
+virtual FILE* execute()=0;
 virtual void display() = 0;
 virtual bool isCon() = 0;
 virtual bool isEx() = 0;
