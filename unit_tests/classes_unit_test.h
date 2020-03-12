@@ -138,4 +138,29 @@ TEST(SemicolonTest, SemiRun){
     EXPECT_EQ(o->run(), true);
 }
 
+
+/*
+TEST(InRedTest, InRedRun){
+
+    char* arr1 = new char[32];
+    strcpy(arr1, "echo one");
+
+    char* arr = new char[32];
+    arr[0] = 'c';
+    arr[1] = 'a';
+    arr[2] = 't';
+    arr[3] = ' ';
+    arr[4] = 'f';
+    arr[5] = 't';
+    arr[6] = 'w';
+    arr[7] = 'o';
+    arr[8]  = '\0';
+    CMD* o = new InRed();
+    CMD* l = new Token(arr1);
+    CMD* r = new Token(arr);
+    o->SetL(l);
+    o->SetR(r);
+    EXPECT_EQ(o->run(), true);
+}
+*/
 #endif

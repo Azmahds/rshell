@@ -15,7 +15,7 @@ And(char* arr){
 };
 
 void display();
-char* execute(){return NULL;};
+char* execute(){ this->run(); return NULL;};
 virtual void SetL(CMD* L);
 virtual void SetR(CMD* R);
 virtual bool isCon(){return true;};
