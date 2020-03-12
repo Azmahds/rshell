@@ -19,7 +19,7 @@ bool Pipe::run() {
 	CMD* r = this->GetR();
 
 	if(l->isCon() && !(r->isCon())){
- 		char *left;
+		char *left;
 		string lt;
 		bool inif = false;
 		if(l->isAnd() || l->isOr() || l->isSemicolon()){
@@ -40,20 +40,21 @@ bool Pipe::run() {
 		char buffer[MAX];
 
 		memset(buffer, '\0',  MAX);
-
+cout << left << endl;
 		FILE* lhs;		
 		if(!inif){lhs = popen(left, r.c_str());}
 		else{lhs = popen(lt.c_str(), r.c_str());}
 
 		FILE* rhs = popen(right.c_str(), w.c_str());
-
-		if(rhs == nullptr) {pclose(lhs); pclose(rhs); return false;}	
 		
+		if(rhs == nullptr) {pclose(lhs); pclose(rhs); return false;}	
+		if(lhs == nullptr){pclose(lhs); pclose(rhs); return true;} 
+			
 		while(fgets(buffer, MAX, lhs) != nullptr){
 			fputs(buffer, rhs);
 		}
 
-		pclose(lhs);
+		fclose(lhs);
 		pclose(rhs);
 
 		return true;

@@ -20,7 +20,7 @@ cons[0] = rArr;
 cons[1] = NULL;
 };
 
-virtual char* execute(){};
+virtual char* execute();
 
 OutRed(char* arr) {
 	char* rArr = (char*) ">";

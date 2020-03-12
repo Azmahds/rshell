@@ -19,7 +19,7 @@ bool InRed::run() {
 
 	memset(BUF, '\0', max);
 		
-	FILE* com = popen(fin.c_str(), r.c_str());
+	FILE* com = fopen(fin.c_str(), r.c_str());
 
 	if(com == nullptr){return false;}
 		
@@ -27,7 +27,7 @@ bool InRed::run() {
 		cout << BUF;
 	}
 		
-	pclose(com);
+	fclose(com);
 
 	return true;
 	
@@ -35,15 +35,12 @@ bool InRed::run() {
 
 
 
-char* InRed::execute(){
+FILE* InRed::execute(){
+	this->run();
 	CMD* L = this->GetL();
 	CMD* R = this->GetR();
 
-	const int size = 5000;
-	char* arr = new char[size];
-	strcpy(arr, "");
-
-	string lhs = L->GetFullTok();}
+	string lhs = L->GetFullTok();
 	string rhs = R->GetFullTok();	
 
 	string fin = lhs + " < " + rhs;
@@ -58,13 +55,9 @@ char* InRed::execute(){
 		
 	FILE* com = popen(fin.c_str(), r.c_str());
 
-	if(com == nullptr){return NULL;}
+	if(arr == nullptr){return nullptr;}
 		
-	while(fgets(BUF, max, com) != nullptr){
-		strcat(arr, BUF);
-	}
-		
-	pclose(com);
 
-	return arr;
+
+	return nullptr;
 }
