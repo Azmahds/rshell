@@ -1,1 +1,5 @@
-use this for pipe intergration
+cat < textfiles/some.txt && cat < textfiles/test.txt
+cat textfiles/test.txt | tr a-z A-Z
+cat < textfiles/some.txt | tr a-z A-Z
+cat < textfiles/some.txt | tr A-Z a-z | tee textfiles/some.txt | tr a-z A-Z > textfiles/test.txt
+exit

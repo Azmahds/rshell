@@ -52,7 +52,7 @@ strcpy(arr1, "[head/]");
 CMD* t = new TestClass(arr1);
 CMD* temp  = new TestClass(arr);
 EXPECT_EQ(temp->run(), true);
-EXPECT_EQ(t->run(), true);
+EXPECT_EQ(t->run(), false);
 }
 
 TEST(TestClass, D_FLAG_Test){

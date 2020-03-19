@@ -15,6 +15,9 @@ ADD_EXECUTABLE(test
     header/Connector.h
     src/postfix.hpp
     src/Test.cpp
+    src/Pipe.cpp
+    src/InRed.cpp
+    src/OutRed.cpp
 )
 
 
