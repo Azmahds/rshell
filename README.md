@@ -11,7 +11,8 @@
   that will help extend the functionality of the rshell executable that we create. Our design pattern illustrates the use of 
   composite classes referenced from parent classes. The design contains classes for command tokens, connectors, exiting, and 
   an implmentation class for the test command. The rshell executable is able to execute single and multiple line commands, 
-  including the use of connectors and precedence, as well as the test command.
+  including the use of connectors and precedence, as well as the test command. We have also included redirection operators and 
+  the pipe operator as well. 
   
   
   ## OMT DIAGRAM
@@ -33,7 +34,9 @@
    The second one is the OR subclass, which will have a run function that compares the left and right commands to see which command 
    should be executed. Finally, there is the SEMICOLON subclass. This subclass will just execute every command after itself, using its 
    own run function. All these classes are executed by calling the run function on the root of the tree that we build. We build a tree
-   to take into account precedences. 
+   to take into account precedences. We have also implemented three more subclasses to the connector class. We created InRed, OutRed, 
+   and Pipe (input redirection, output redirection, and pipe operators). These new subclasses work with files and redirecting their 
+   inputs and outputs.  
    
    ## PROTOTYPES/RESEARCH
    `fork()`    - The process for creating a child process that runs alongside the parent process. Returns an integer value.
